@@ -12,34 +12,34 @@ html {
 }
 
 main.morsy {
-  height: 100vh;
-}
-
-section {
-  padding: 5rem 15rem;
-}
-
-section.intro {
-  background-color: wheat;
-  text-align: center;
-  height: 30vh;
+  min-height: 80vh;
+  min-width: 80vh;
+  padding: 2.5rem;
+  margin: 5rem 10rem;
+  border: 5px solid black;
+  border-radius: 2rem;
 }
 
 section.in-out {
-  background-color: lightblue;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 0rem 10rem;
-  height: 70vh;
+  justify-content: space-between;
 }
 
 section.in-out div {
-  padding: 5rem;
+  padding: 2.5rem 0;
+}
+
+div.convert {
+  display: flex;
+  justify-items: center;
+}
+
+button.btn-convert {
+  height: 2rem;
 }
 
 h1 {
-  font-size: 8rem;
+  font-size: 5rem;
   font-weight: normal;
 }
 
@@ -49,12 +49,11 @@ h2 {
 }
 
 footer {
-  padding: 5rem 15rem;
-  background-color: orange;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  bottom: 0;
 }
 img.footer-icon {
   width: 2.8rem;
