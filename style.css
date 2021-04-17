@@ -11,16 +11,51 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Titles */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-
+main.morsy {
+  height: 100vh;
 }
 
+section {
+  padding: 5rem 15rem;
+}
+
+section.intro {
+  background-color: wheat;
+  text-align: center;
+  height: 30vh;
+}
+
+section.in-out {
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0rem 10rem;
+  height: 70vh;
+}
+
+section.in-out div {
+  padding: 5rem;
+}
+
+h1 {
+  font-size: 8rem;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: lighter;
+}
+
+footer {
+  padding: 5rem 15rem;
+  background-color: orange;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 img.footer-icon {
   width: 2.8rem;
   height: 2.8rem;
