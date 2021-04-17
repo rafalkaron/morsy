@@ -3,6 +3,7 @@ html {
   font-size: 75%;
   scroll-behavior: smooth;
   background-color: darkorange;
+  max-height: 100vh;
 }
 
 * {
@@ -24,31 +25,35 @@ main.morsy {
 }
 
 section.in-out {
-  display: flex;
-  justify-content: space-evenly;
+  display: flexbox;
   flex-wrap: wrap;
+  margin: 1.5rem 0rem 2.5rem 0rem;
 }
 
 section.in-out div {
   padding: 2.5rem 0;
-  width: 48%;
   min-width: 200px;
 }
 
+.plaintext-input,
 .plaintext-input,
 .morse-output {
   display: block;
   border: 2.5px solid black;
   border-radius: 5px;
-  margin: 1rem 0;
-  width: 100%;
-  min-height: 25vh;
+  margin: 0.5rem 0;
+  min-width: 100%;
+  min-height: 150px;
   height: fit-content;
+  text-align: start;
+  word-wrap: normal;
+  overflow-wrap: normal;
 }
 
 h1 {
   font-size: 5rem;
   font-weight: normal;
+  padding-bottom: 1rem;
 }
 
 h1.app-title {
@@ -66,23 +71,26 @@ h1.app-title:hover .morse-title {
   display: inline;
 }
 
+p.shortdesc {
+  font-size: 1.2rem;
+  font-style: oblique;
+}
+
 h2 {
   font-size: 2.5rem;
   font-weight: lighter;
 }
 
 footer {
-  margin-top: 15rem;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 0 2.5rem;
   border-top: 2.5px solid black;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 div.footer-column {
@@ -90,16 +98,12 @@ div.footer-column {
   font-weight: lighter;
   font-size: 1.2rem;
   text-decoration: none;
-  padding: 0.5rem 0;
+  padding: 0.5rem 2.5rem;
 }
 
 div.footer-column.footer-contact {
   display: flex;
   flex-wrap: wrap;
-}
-
-div.footer-column.footer-copyright {
-  padding-right: 2.5rem;
 }
 
 a.footer-link {
@@ -126,6 +130,13 @@ img.footer-icon:first-of-type {
 /*** Tall screens - START */
 @media only screen and (max-width: 680px) {
 
+  main.morsy {
+    text-align: center;
+  }
 
+  footer {
+    display: flexbox;
+    justify-content: center;
+  }
 
 }
