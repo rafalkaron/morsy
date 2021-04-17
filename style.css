@@ -13,17 +13,19 @@ html {
 }
 
 main.morsy {
-  min-height: 80vh;
+  min-height: 90vh;
+  min-width: 300px;
   padding: 2.5rem;
-  margin: 5rem 10rem;
-  border: 5px solid black;
-  border-radius: 2rem;
+  margin: 5vh 5vw;
+  border: 5px solid #222222;
+  border-radius: 1rem;
   background-color: white;
+  position: relative;
 }
 
 section.in-out {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
@@ -36,11 +38,11 @@ section.in-out div {
 .plaintext-input,
 .morse-output {
   display: block;
-  border: 1px solid black;
+  border: 2.5px solid black;
   border-radius: 5px;
   margin: 1rem 0;
   width: 100%;
-  min-height: 10rem;
+  min-height: 25vh;
   height: fit-content;
 }
 
@@ -70,14 +72,47 @@ h2 {
 }
 
 footer {
-  margin-top: auto;
-  position: relative;
+  margin-top: 15rem;
+  position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  padding: 0 2.5rem;
+  border-top: 2.5px solid black;
 }
+
+div.footer-column {
+  color: #000;
+  font-weight: lighter;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+div.footer-column.footer-contact {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.footer-column.footer-copyright {
+  padding-right: 2.5rem;
+}
+
+a.footer-link {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+a.footer-link:hover {
+  text-decoration: underline;
+}
+
 img.footer-icon {
   width: 2.8rem;
   height: 2.8rem;
@@ -86,4 +121,11 @@ img.footer-icon {
 }
 img.footer-icon:first-of-type {
   padding-left: 0;
+}
+
+/*** Tall screens - START */
+@media only screen and (max-width: 680px) {
+
+
+
 }
