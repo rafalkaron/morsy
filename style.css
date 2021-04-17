@@ -16,8 +16,8 @@ html {
 main.morsy {
   min-height: 90vh;
   min-width: 300px;
-  padding: 2.5rem;
-  margin: 5vh 5vw;
+  padding: 2.5rem 5rem;
+  margin: 5vh 15vw;
   border: 5px solid #222222;
   border-radius: 1rem;
   background-color: white;
@@ -126,10 +126,12 @@ img.footer-icon:first-of-type {
 }
 
 /*** Tall screens - START */
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 720px) {
 
   main.morsy {
     text-align: center;
+    padding: 2.5rem;
+    margin: 5vh 10vw;
   }
 
   footer {
