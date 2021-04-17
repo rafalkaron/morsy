@@ -31,11 +31,9 @@ section.in-out {
 }
 
 section.in-out div {
-  padding: 2.5rem 0;
-  min-width: 200px;
+  padding: 1.5rem 0;
 }
 
-.plaintext-input,
 .plaintext-input,
 .morse-output {
   display: block;
@@ -43,7 +41,7 @@ section.in-out div {
   border-radius: 5px;
   margin: 0.5rem 0;
   min-width: 100%;
-  min-height: 150px;
+  min-height: 100px;
   height: fit-content;
   text-align: start;
   word-wrap: normal;
