@@ -1,0 +1,32 @@
+
+/* General */
+html {
+  font-size: 75%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Titles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+}
+
+img.footer-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  display: inline-block;
+  padding-right: 0.8rem;
+}
+img.footer-icon:first-of-type {
+  padding-left: 0;
+}
