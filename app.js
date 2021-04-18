@@ -54,7 +54,7 @@ const morseDictionary = {
   "/": "-..-.",
   "&": ".-...",
   "-": "-....-",
-  " ": "/",
+  " ": "/", //issue with whitespace
 };
 
 /* Uppercase all characters */
@@ -66,15 +66,16 @@ const upperCase = (inputText) => {
 
 /* Encode uppercased characters */
 const encodeCharacters = (inputText) => {
-  const encoded = inputText.replace("A", ".-");
+  // let encoded = inputText.replace("A", ".-");
+  let encoded = inputText.replace(/./gi, (m) => morseDictionary[m]);
   console.log(`[Encode] ${encoded}`);
   return encoded;
 };
 
 /* Generate Morse code */
 const generateMorse = (inputText) => {
-  var morse = upperCase(inputText);
-  var morse = encodeCharacters(morse);
+  let morse = upperCase(inputText);
+  morse = encodeCharacters(morse);
   return morse;
 };
 
