@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morsy</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+  </head>
+
+  <body>
+    <main class="morsy">
+      <div class="app-body">
+        <section class="intro">
+          <h1 class="app-title">
+            <span class="plaintext-title">Morsy</span
+            ><span class="morse-title">-- --- .-. ... -.-- </span>
+          </h1>
+          <p class="shortdesc">
+            <span class="plaintext-shortdesc">Generate Morse code. Fast.</span
+            ><span class="morse-shortdesc"
+              >--. . -. . .-. .- - . / -- --- .-. ... . / -.-. --- -.. . .-.-.-
+              / ..-. .- ... - .-.-.-</span
+            >
+          </p>
+        </section>
+        <section class="in-out">
+          <div class="input">
+            <h2>Your message</h2>
+            <textarea
+              oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+              wrap:="on"
+              type="text"
+              class="plaintext-input"
+              id="plaintextInput"
+              placeholder="Enter the text that you want to translate to Morse code."
+            ></textarea>
+          </div>
+          <div class="output">
+            <h2>Morse code</h2>
+            <output type="text" class="morse-output"></output>
+            <div class="controls">
+              <button title="Convert your message to Morse code" class="btn-play">Generate</button>
+              <button title="Play your coded message" class="btn-play">Play</button>
+              <button title="Pause your coded message" class="btn-pause">Pause</button>
+              <button title="Stopy your coded message" class="btn-stop">Stop</button>
+              <button title="Toggle repeat for your codded message" class="btn-repeat">Repeat</button>
+              <button title="Display your coded message as light signal" class="btn-light">Light</button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer>
+        <div class="footer-column footer-copyright">
+          Copyright © 2021
+          <a class="footer-link" href="" target="blank">Rafał Karoń</a>.
+        </div>
+        <div class="footer-column footer-contact">
+          <a
+            target="blank"
+            class="footer-image-link"
+            href="mailto:rafalkaron@gmail..com"
+            title="Email"
+            ><img class="footer-icon" src="/assets/email_dark.svg"
+          /></a>
+          <a
+            target="blank"
+            class="footer-image-link"
+            href="https://github.com/rafalkaron"
+            title="GitHub"
+            ><img class="footer-icon" src="/assets/github_dark.svg"
+          /></a>
+          <a
+            target="blank"
+            class="footer-image-link"
+            href="https://linkedin.com/in/https://www.linkedin.com/in/rafa%C5%82-karo%C5%84-39534516b/"
+            title="LinkedIn"
+            ><img class="footer-icon" src="/assets/linkedin_dark.svg"
+          /></a>
+          <a
+            target="blank"
+            class="footer-image-link"
+            href="https://twitter.com/rafalkaron"
+            title="Twitter"
+            ><img class="footer-icon" src="/assets/twitter_dark.svg"
+          /></a>
+          <a
+            target="blank"
+            class="footer-image-link"
+            href="https://500px.com/rafalkaron"
+            title="500px"
+            ><img class="footer-icon" src="/assets/500px_dark.svg"
+          /></a>
+        </div>
+      </footer>
+    </main>
+  </body>
+  <script src="app.js"></script>
+</html>
