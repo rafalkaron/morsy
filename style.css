@@ -5,7 +5,7 @@
 html {
   font-size: 75%;
   max-height: 100vh;
-  background-color: darkorange;
+  background-color: #118ab2;
   scroll-behavior: smooth;
 }
 
@@ -17,7 +17,7 @@ html {
 }
 
 ::selection {
-  background-color: darkorange;
+  background-color: #118ab2;
 }
 /* END - GENERAL */
 
@@ -180,7 +180,7 @@ div.controls button:focus {
 }
 
 div.controls button:focus {
-  color: darkorange;
+  background-color: #118ab2;
 }
 /* END - UICONTROLS */
 
