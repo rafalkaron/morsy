@@ -1,6 +1,6 @@
 /* START - GENERAL */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Poppins:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Poppins:wght@400;500&display=swap');
 html {
   font-size: 75%;
   max-height: 100vh;
@@ -55,7 +55,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0 2.5rem;
+  padding: 0 5rem;
 }
 
 div.footer-column {
@@ -63,7 +63,7 @@ div.footer-column {
   font-weight: bold;
   font-size: 1.2rem;
   text-decoration: none;
-  padding: 0.5rem 2.5rem;
+  padding: 0.5rem 0;
 }
 
 div.footer-column.footer-contact {
@@ -184,7 +184,7 @@ div.controls button:focus {
 /* END - UICONTROLS */
 
 /* TALL SCREENS - START */
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 740px) {
   main.morsy {
     text-align: center;
     padding: 2.5rem;
