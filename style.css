@@ -30,8 +30,10 @@ div.app-body {
   margin-bottom: 5rem;
 }
 
-section.intro {
-  padding-bottom: 1rem;
+section.intro,
+div.input {
+  padding-bottom: 2rem;
+  word-break: break-word;
 }
 
 section.in-out {
@@ -40,22 +42,20 @@ section.in-out {
   margin: 1.5rem 0rem 0rem 0rem;
 }
 
-section.in-out div {
-  padding: 1.5rem 0;
-}
-
 .plaintext-input,
 .morse-output {
   display: block;
-  border: 2.5px solid black;
+  border: 3.5px solid black;
   border-radius: 5px;
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
   min-width: 100%;
   min-height: 100px;
   height: fit-content;
   text-align: start;
-  word-wrap: normal;
-  overflow-wrap: normal;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  padding: 0.5rem;
 }
 
 h1 {
@@ -98,12 +98,39 @@ h2 {
   font-family: 'Bungee', Arial, Helvetica, sans-serif;
 }
 
+div.controls {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: left;
+  margin: 0 -0.5rem;
+}
+
+div.controls button {
+  border-radius: 5px;
+  border: 2.5px solid black;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-family: 'Bungee', Arial, Helvetica, sans-serif;
+  margin: 0.25rem 0.5rem;
+  font-size: 1rem;
+}
+
+div.controls button:hover,
+div.controls button:focus {
+  color: white;
+  background-color: black;
+}
+
+div.controls button:focus {
+  color: orange;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  border-top: 2.5px solid black;
+  border-top: 3.5px solid black;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -143,22 +170,20 @@ img.footer-icon {
   width: 2.8rem;
   height: 2.8rem;
   display: inline-block;
-  padding-right: 0.8rem;
-}
-img.footer-icon:first-of-type {
-  padding-left: 0;
+  padding-left: 0.8rem;
 }
 
 /*** Tall screens - START */
 @media only screen and (max-width: 720px) {
 
-* {
-}
-
   main.morsy {
     text-align: center;
     padding: 2.5rem;
     margin: 5vh 10vw;
+  }
+
+  div.controls {
+    justify-content: center;
   }
 
   footer {
@@ -172,5 +197,12 @@ img.footer-icon:first-of-type {
 
   div.footer-column.footer-copyright {
     padding: 0 0 1rem 0;
+  }
+}
+
+/* iPhone 10-ish */
+@media only screen and (max-width: 450px) {
+  html{
+      font-size: 50%;
   }
 }

@@ -27,17 +27,22 @@
         <section class="in-out">
           <div class="input">
             <h2>Your message</h2>
-            <input type="text" class="plaintext-input" />
+            <textarea
+              wrap:="on"
+              type="text"
+              class="plaintext-input"
+              placeholder="Enter the text that you want to translate to Morse code."
+            ></textarea>
           </div>
           <div class="output">
             <h2>Morse code</h2>
             <output type="text" class="morse-output"></output>
             <div class="controls">
-              <button>▶️</button>
-              <button>⏸️</button>
-              <button>⏹️</button>
-              <button>🔁</button>
-              <button>💡</button>
+              <button class="btn-play">Play</button>
+              <button class="btn-pause">Pause</button>
+              <button class="btn-stop">Stop</button>
+              <button class="btn-repeat">Repeat</button>
+              <button class="btn-light">Light</button>
             </div>
           </div>
         </section>
