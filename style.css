@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
 /* General */
 html {
   font-size: 75%;
@@ -24,6 +26,10 @@ main.morsy {
   position: relative;
 }
 
+div.app-body {
+  margin-bottom: 5rem;
+}
+
 section.intro {
   padding-bottom: 1rem;
 }
@@ -31,7 +37,7 @@ section.intro {
 section.in-out {
   display: flexbox;
   flex-wrap: wrap;
-  margin: 1.5rem 0rem 2.5rem 0rem;
+  margin: 1.5rem 0rem 0rem 0rem;
 }
 
 section.in-out div {
@@ -58,6 +64,11 @@ h1 {
   padding-bottom: 1rem;
 }
 
+h1.app-title *,
+p.shortdesc * {
+  font-family: 'Bungee', Arial, Helvetica, sans-serif;
+}
+
 h1.app-title {
   display: inline-block;
 }
@@ -71,19 +82,20 @@ h1.app-title:hover .plaintext-title,
 p.shortdesc:hover .plaintext-shortdesc {
   display: none;
 }
+
 h1.app-title:hover .morse-title,
 p.shortdesc:hover .morse-shortdesc {
   display: inline;
 }
 
 p.shortdesc {
-  font-size: 1.2rem;
-  font-style: oblique;
+  font-size: 1.5rem;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: lighter;
+  font-family: 'Bungee', Arial, Helvetica, sans-serif;
 }
 
 footer {
@@ -139,6 +151,9 @@ img.footer-icon:first-of-type {
 
 /*** Tall screens - START */
 @media only screen and (max-width: 720px) {
+
+* {
+}
 
   main.morsy {
     text-align: center;

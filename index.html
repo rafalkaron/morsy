@@ -10,29 +10,38 @@
 
   <body>
     <main class="morsy">
-      <section class="intro">
-        <h1 class="app-title">
-          <span class="plaintext-title">Morsy</span
-          ><span class="morse-title">-- --- .-. ... -.-- </span>
-        </h1>
-        <p class="shortdesc">
-          <span class="plaintext-shortdesc">Generate Morse code. Fast.</span
-          ><span class="morse-shortdesc"
-            >--. . -. . .-. .- - . / -- --- .-. ... . / -.-. --- -.. . .-.-.- /
-            ..-. .- ... - .-.-.-</span
-          >
-        </p>
-      </section>
-      <section class="in-out">
-        <div class="input">
-          <h2>Your text</h2>
-          <input type="text" class="plaintext-input" />
-        </div>
-        <div class="output">
-          <h2>Morse code</h2>
-          <output type="text" class="morse-output"></output>
-        </div>
-      </section>
+      <div class="app-body">
+        <section class="intro">
+          <h1 class="app-title">
+            <span class="plaintext-title">Morsy</span
+            ><span class="morse-title">-- --- .-. ... -.-- </span>
+          </h1>
+          <p class="shortdesc">
+            <span class="plaintext-shortdesc">Generate Morse code. Fast.</span
+            ><span class="morse-shortdesc"
+              >--. . -. . .-. .- - . / -- --- .-. ... . / -.-. --- -.. . .-.-.-
+              / ..-. .- ... - .-.-.-</span
+            >
+          </p>
+        </section>
+        <section class="in-out">
+          <div class="input">
+            <h2>Your message</h2>
+            <input type="text" class="plaintext-input" />
+          </div>
+          <div class="output">
+            <h2>Morse code</h2>
+            <output type="text" class="morse-output"></output>
+            <div class="controls">
+              <button>▶️</button>
+              <button>⏸️</button>
+              <button>⏹️</button>
+              <button>🔁</button>
+              <button>💡</button>
+            </div>
+          </div>
+        </section>
+      </div>
       <footer>
         <div class="footer-column footer-copyright">
           Copyright © 2021
