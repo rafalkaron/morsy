@@ -1,3 +1,6 @@
-var plaintextInput = document.getElementById("plaintextInput").value;
+var plaintextInput = document.getElementById("plaintextInput");
+var btnGenerate = document.querySelector(".btn-generate");
 
-console.log(plaintextInput);
+btnGenerate.addEventListener("click", function () {
+  console.log(plaintextInput.value);
+});
