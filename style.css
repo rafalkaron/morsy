@@ -24,6 +24,10 @@ main.morsy {
   position: relative;
 }
 
+section.intro {
+  padding-bottom: 1rem;
+}
+
 section.in-out {
   display: flexbox;
   flex-wrap: wrap;
@@ -58,14 +62,17 @@ h1.app-title {
   display: inline-block;
 }
 
-h1.app-title .morse-title {
+h1.app-title .morse-title,
+p.shortdesc .morse-shortdesc {
   display: none;
 }
 
-h1.app-title:hover .plaintext-title {
+h1.app-title:hover .plaintext-title,
+p.shortdesc:hover .plaintext-shortdesc {
   display: none;
 }
-h1.app-title:hover .morse-title {
+h1.app-title:hover .morse-title,
+p.shortdesc:hover .morse-shortdesc {
   display: inline;
 }
 
@@ -89,11 +96,12 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 0 2.5rem;
 }
 
 div.footer-column {
   color: #000;
-  font-weight: lighter;
+  font-weight: bold;
   font-size: 1.2rem;
   text-decoration: none;
   padding: 0.5rem 2.5rem;
@@ -102,6 +110,10 @@ div.footer-column {
 div.footer-column.footer-contact {
   display: flex;
   flex-wrap: wrap;
+}
+
+div.footer-column.footer-copyright {
+  padding: 1rem 0 1rem 0;
 }
 
 a.footer-link {
@@ -135,8 +147,15 @@ img.footer-icon:first-of-type {
   }
 
   footer {
-    display: flexbox;
+    flex-direction: column-reverse;
     justify-content: center;
   }
 
+  div.footer-column {
+    padding: 0.5rem 1rem;
+  }
+
+  div.footer-column.footer-copyright {
+    padding: 0 0 1rem 0;
+  }
 }
