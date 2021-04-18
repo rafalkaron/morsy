@@ -1,20 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800;500&display=swap');
-/* General */
+/* START - GENERAL */
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@800;500&display=swap");
+
 html {
   font-size: 75%;
-  scroll-behavior: smooth;
-  background-color: darkorange;
   max-height: 100vh;
+  background-color: darkorange;
+  scroll-behavior: smooth;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
+::selection {
+  background-color: darkorange;
+}
+/* END - GENERAL */
+
+/* START - APP BODY */
 main.morsy {
   min-height: 90vh;
   min-width: 300px;
@@ -33,99 +40,10 @@ div.app-body {
 section.intro,
 div.input {
   padding-bottom: 2rem;
-  word-break: break-word;
 }
 
 section.in-out {
-  display: flexbox;
-  flex-wrap: wrap;
   margin: 1.5rem 0rem 0rem 0rem;
-}
-
-.plaintext-input,
-.morse-output {
-  display: block;
-  border: 3.5px solid black;
-  border-radius: 5px;
-  margin: 0.75rem 0;
-  min-width: 100%;
-  min-height: 100px;
-  height: fit-content;
-  text-align: start;
-  outline: none;
-  resize: none;
-  overflow: auto;
-  padding: 0.5rem;
-  font-size: 1.35rem;
-  font-family: 'Poppins', sans-serif;
-}
-
-h1 {
-  font-size: 5rem;
-  font-weight: normal;
-  padding-bottom: 1rem;
-}
-
-h1.app-title *,
-p.shortdesc * {
-  font-family: 'Bungee', Arial, Helvetica, sans-serif;
-}
-
-h1.app-title {
-  display: inline-block;
-}
-
-h1.app-title .morse-title,
-p.shortdesc .morse-shortdesc {
-  display: none;
-}
-
-h1.app-title:hover .plaintext-title,
-p.shortdesc:hover .plaintext-shortdesc {
-  display: none;
-}
-
-h1.app-title:hover .morse-title,
-p.shortdesc:hover .morse-shortdesc {
-  display: inline;
-}
-
-p.shortdesc {
-  font-size: 1.5rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: lighter;
-  font-family: 'Bungee', Arial, Helvetica, sans-serif;
-}
-
-div.controls {
-  display: flex;
-  flex-wrap:wrap;
-  justify-content: left;
-  margin: 0 -0.5rem;
-}
-
-div.controls button {
-  border-radius: 5px;
-  border: 2.5px solid black;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  font-family: 'Bungee', Arial, Helvetica, sans-serif;
-  margin: 0.25rem 0.5rem;
-  font-size: 1rem;
-  background-color: white;
-}
-
-div.controls button:hover,
-div.controls button:focus {
-  color: white;
-  background-color: black;
-}
-
-div.controls button:focus {
-  color: orange;
 }
 
 footer {
@@ -147,12 +65,6 @@ div.footer-column {
   font-size: 1.2rem;
   text-decoration: none;
   padding: 0.5rem 2.5rem;
-  font-family: 'Poppins', sans-serif;
-}
-
-div.footer-column * {
-  font-family: 'Poppins', sans-serif;
-
 }
 
 div.footer-column.footer-contact {
@@ -181,10 +93,99 @@ img.footer-icon {
   display: inline-block;
   padding-left: 0.8rem;
 }
+/* END - APP BODY */
 
-/*** Tall screens - START */
+/* START - HEADERS */
+h1 {
+  font-size: 5rem;
+  font-weight: normal;
+  padding-bottom: 1rem;
+}
+
+h1.app-title {
+  display: inline-block;
+}
+
+h1.app-title *,
+p.shortdesc * {
+  font-family: "Bungee", Arial, Helvetica, sans-serif;
+}
+
+h1.app-title .morse-title,
+p.shortdesc .morse-shortdesc {
+  display: none;
+}
+
+h1.app-title:hover .plaintext-title,
+p.shortdesc:hover .plaintext-shortdesc {
+  display: none;
+}
+
+h1.app-title:hover .morse-title,
+p.shortdesc:hover .morse-shortdesc {
+  display: inline;
+}
+
+p.shortdesc {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  font-family: "Bungee", Arial, Helvetica, sans-serif;
+}
+/* END - HEADERS */
+
+/* START - UICONTROLS */
+.plaintext-input,
+.morse-output {
+  display: block;
+  border: 3.5px solid black;
+  border-radius: 5px;
+  margin: 0.75rem 0;
+  min-width: 100%;
+  min-height: 100px;
+  height: fit-content;
+  text-align: start;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  padding: 0.5rem;
+  font-size: 1.35rem;
+}
+
+div.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 0 -0.5rem;
+}
+
+div.controls button {
+  border-radius: 5px;
+  border: 2.5px solid black;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-family: "Bungee", Arial, Helvetica, sans-serif;
+  margin: 0.25rem 0.5rem;
+  font-size: 1rem;
+  background-color: white;
+}
+
+div.controls button:hover,
+div.controls button:focus {
+  color: white;
+  background-color: black;
+}
+
+div.controls button:focus {
+  color: darkorange;
+}
+/* END - UICONTROLS */
+
+/* TALL SCREENS - START */
 @media only screen and (max-width: 720px) {
-
   main.morsy {
     text-align: center;
     padding: 2.5rem;
@@ -209,9 +210,10 @@ img.footer-icon {
   }
 }
 
-/* iPhone 10-ish */
 @media only screen and (max-width: 450px) {
-  html{
-      font-size: 50%;
+  html {
+    font-size: 50%;
   }
 }
+
+/* TALL SCREENS - END */
