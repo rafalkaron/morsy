@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800;500&display=swap');
 /* General */
 html {
   font-size: 75%;
@@ -56,6 +56,8 @@ section.in-out {
   resize: none;
   overflow: auto;
   padding: 0.5rem;
+  font-size: 1.35rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 h1 {
@@ -113,6 +115,7 @@ div.controls button {
   font-family: 'Bungee', Arial, Helvetica, sans-serif;
   margin: 0.25rem 0.5rem;
   font-size: 1rem;
+  background-color: white;
 }
 
 div.controls button:hover,
@@ -144,6 +147,12 @@ div.footer-column {
   font-size: 1.2rem;
   text-decoration: none;
   padding: 0.5rem 2.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+div.footer-column * {
+  font-family: 'Poppins', sans-serif;
+
 }
 
 div.footer-column.footer-contact {
