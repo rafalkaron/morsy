@@ -52,8 +52,10 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   border-top: 3.5px solid black;
+  margin: -2.5rem -5rem;
   margin-top: auto; 
   padding: 0 5rem;
+
 }
 
 div.footer-column {
@@ -188,7 +190,7 @@ div.controls button:focus {
 
 /* TALL SCREENS - START */
 @media only screen and (max-width: 740px) {
-  main.morsy {
+  body {
     text-align: center;
     padding: 2.5rem;
     margin: 5vh 10vw;
@@ -201,7 +203,9 @@ div.controls button:focus {
   footer {
     flex-direction: column-reverse;
     justify-content: center;
-  }
+    margin: -2.5rem -2.5rem;
+    margin-top: auto; 
+    }
 
   div.footer-column {
     padding: 0.5rem 1rem;
