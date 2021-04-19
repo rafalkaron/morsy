@@ -57,36 +57,26 @@ const morseDictionary = {
   " ": "/", //issue with whitespace
 };
 
-/* Uppercase all characters */
-const upperCase = (inputText) => {
-  const upperCased = inputText.toUpperCase(inputText);
-  console.log(`[Uppercase] ${upperCased}`);
-  return upperCased;
-};
-
-/* Encode uppercased characters */
-const encodeCharacters = (inputText) => {
-  // let encoded = inputText.replace("A", ".-");
-  let encoded = inputText.replace(/./gi, (m) => morseDictionary[m]);
-  console.log(`[Encode] ${encoded}`);
-  return encoded;
-};
-
 /* Generate Morse code */
 const generateMorse = (inputText) => {
-  let morse = upperCase(inputText);
-  morse = encodeCharacters(morse);
+  let morse = inputText.toUpperCase(inputText);
+  morse = morse.replace(/./gi, (m) => morseDictionary[m]);
+  console.log(`[Encode] ${morse}`);
   return morse;
 };
-
-/* Populate the output field on click 
-btnGenerate.addEventListener("click", function () {
-  console.log("[i] Generate Morse");
-  morseOutput.innerHTML = generateMorse(plaintextInput.value);
-});*/
 
 /* Populate the output field on change */
 plaintextInput.addEventListener(
   "input",
   (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
 );
+
+if ("key" in morseDictionary) {
+  console.log("stop it!");
+}
+
+/* Populate the output field on click 
+btnGenerate.addEventListener("click", function () {
+  console.log("[i] Generate Morse");
+  morseOutput.innerHTML = generateMorse(plaintextInput.value);
+});*/
