@@ -59,8 +59,9 @@ const morseDictionary = {
 /* Generate Morse code */
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
+  let characters = Array.from(morse);
 
-  for (character of Array.from(morse)) {
+  for (character of characters[characters.length - 1]) {
     if (character in morseDictionary) {
       console.log(`[Valid character]${character}`);
     } else {
