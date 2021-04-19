@@ -16,7 +16,7 @@ html {
 }
 
 ::selection {
-  background-color: #118ab2;
+  background-color: #118ab259;
 }
 /* END - GENERAL */
 
@@ -191,6 +191,18 @@ div.controls button:focus {
   background-color: #118ab2;
 }
 /* END - UICONTROLS */
+
+@media only screen and (min-width: 920px) {
+  body {
+    margin: 5vh 20vw;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  body {
+    margin: 5vh 15vw;
+  }
+}
 
 /* TALL SCREENS - START */
 @media only screen and (max-width: 740px) {
