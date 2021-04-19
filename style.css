@@ -33,6 +33,10 @@ body {
   flex-direction: column;
 }
 
+main {
+  margin-bottom: 2rem;
+}
+
 div.app-body {
   margin-bottom: 5rem;
 }
