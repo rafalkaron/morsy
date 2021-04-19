@@ -1,5 +1,4 @@
 const plaintextInput = document.getElementById("plaintextInput");
-const btnGenerate = document.querySelector(".btn-generate");
 const morseOutput = document.getElementById("morseOutput");
 
 /* Character:Morse Dictionary */
@@ -54,11 +53,14 @@ const morseDictionary = {
   "/": "-..-.",
   "&": ".-...",
   "-": "-....-",
-  " ": "/", //issue with whitespace
+  " ": "/",
 };
 
 /* Generate Morse code */
 const generateMorse = (inputText) => {
+  if (morseDictionary.ł === undefined) {
+    console.log("undefined!");
+  }
   let morse = inputText.toUpperCase(inputText);
   morse = morse.replace(/./gi, (m) => morseDictionary[m]);
   console.log(`[Encode] ${morse}`);
@@ -70,10 +72,6 @@ plaintextInput.addEventListener(
   "input",
   (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
 );
-
-if ("key" in morseDictionary) {
-  console.log("stop it!");
-}
 
 /* Populate the output field on click 
 btnGenerate.addEventListener("click", function () {
