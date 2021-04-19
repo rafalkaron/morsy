@@ -79,9 +79,14 @@ const generateMorse = (inputText) => {
   return morse;
 };
 
-/* Populate the output field on click */
+/* Populate the output field on click 
 btnGenerate.addEventListener("click", function () {
   console.log("[i] Generate Morse");
-  //morseOutput.innerHTML = plaintextInput.value;
   morseOutput.innerHTML = generateMorse(plaintextInput.value);
-});
+});*/
+
+/* Populate the output field on change */
+plaintextInput.addEventListener(
+  "input",
+  (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
+);
