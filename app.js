@@ -58,10 +58,16 @@ const morseDictionary = {
 
 /* Generate Morse code */
 const generateMorse = (inputText) => {
-  if (morseDictionary.ł === undefined) {
-    console.log("undefined!");
-  }
   let morse = inputText.toUpperCase(inputText);
+
+  for (character of Array.from(morse)) {
+    if (character in morseDictionary) {
+      console.log(`[Valid character]${character}`);
+    } else {
+      alert("wrong symbol!");
+    }
+  }
+
   morse = morse.replace(/./gi, (m) => morseDictionary[m]);
   console.log(`[Encode] ${morse}`);
   return morse;
