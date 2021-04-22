@@ -60,12 +60,17 @@ const morseDictionary = {
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
   let characters = Array.from(morse);
+  let lastCharacter = characters[characters.length - 1];
 
-  for (character of characters[characters.length - 1]) {
+  for (const character of characters) {
     if (character in morseDictionary) {
       console.log(`[Valid character]${character}`);
+      plaintextInput.style.borderColor = "black";
+      morseOutput.style.background = "white";
     } else {
-      alert("wrong symbol!");
+      plaintextInput.style.borderColor = "orangered";
+      morseOutput.style.background = "black";
+      //morse.output.style.content = "Invalid input";
     }
   }
 
