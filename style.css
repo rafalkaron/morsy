@@ -16,7 +16,7 @@ html {
 }
 
 ::selection {
-  background-color: #118ab259;
+  background-color: #118ab2;
 }
 /* END - GENERAL */
 
@@ -41,9 +41,12 @@ div.app-body {
   margin-bottom: 5rem;
 }
 
-section.intro,
+section.intro {
+  margin-bottom: 3.5rem;
+}
+
 div.input {
-  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 section.in-out {
@@ -106,6 +109,7 @@ h1 {
 
 h1.app-title {
   display: inline-block;
+  line-height: 9rem;
 }
 
 h1.app-title *,
@@ -113,24 +117,23 @@ p.shortdesc * {
   font-family: "Bungee", Arial, Helvetica, sans-serif;
 }
 
-h1.app-title .morse-title,
-p.shortdesc .morse-shortdesc {
+h1.app-title span.morse-title,
+p.shortdesc span.morse-shortdesc {
   display: none;
 }
 
-h1.app-title:hover .plaintext-title,
-p.shortdesc:hover .plaintext-shortdesc {
+h1.app-title:hover span.plaintext-title,
+p.shortdesc:hover span.plaintext-shortdesc {
   display: none;
 }
 
-h1.app-title:hover .morse-title,
-p.shortdesc:hover .morse-shortdesc {
+h1.app-title:hover span.morse-title,
+p.shortdesc:hover span.morse-shortdesc {
   display: inline;
 }
 
 div.shortdesc {
   display: block;
-  margin: 0;
 }
 
 p.shortdesc {
@@ -151,7 +154,7 @@ h2 {
   display: block;
   border: 3.5px solid black;
   border-radius: 5px;
-  margin: 0.75rem 0;
+  margin: 0;
   min-width: 100%;
   min-height: 100px;
   height: fit-content;

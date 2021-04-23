@@ -1,14 +1,16 @@
 const plaintextInput = document.getElementById("plaintextInput");
-const btnGenerate = document.querySelector(".btn-generate");
 const morseOutput = document.getElementById("morseOutput");
 
 /* Character:Morse Dictionary */
 const morseDictionary = {
   A: ".-",
+  Ą: ".-.-",
   B: "-...",
   C: "-.-.",
+  Ć: "-.-..",
   D: "-..",
   E: ".",
+  Ę: "..-..",
   F: "..-.",
   G: "--.",
   H: "....",
@@ -16,20 +18,26 @@ const morseDictionary = {
   J: ".---",
   K: "-.-",
   L: ".-..",
+  Ł: ".-..-",
   M: "--",
   N: "-.",
+  Ń: "--.--",
   O: "---",
+  Ó: "---.",
   P: ".--.",
   Q: "--.-",
   R: ".-.",
   S: "...",
+  Ś: "...-...",
   T: "-",
   U: "..-",
   V: "...-",
   W: ".--",
   X: "-..-",
+  Ź: "--..-.",
   Y: "-.--",
   Z: "--..",
+  Ż: "--..-",
 
   1: ".----",
   2: "..---",
@@ -54,39 +62,38 @@ const morseDictionary = {
   "/": "-..-.",
   "&": ".-...",
   "-": "-....-",
-  " ": "/", //issue with whitespace
+  " ": "/",
 };
 
-/* Uppercase all characters */
-const upperCase = (inputText) => {
-  const upperCased = inputText.toUpperCase(inputText);
-  console.log(`[Uppercase] ${upperCased}`);
-  return upperCased;
-};
-
-/* Encode uppercased characters */
-const encodeCharacters = (inputText) => {
-  // let encoded = inputText.replace("A", ".-");
-  let encoded = inputText.replace(/./gi, (m) => morseDictionary[m]);
-  console.log(`[Encode] ${encoded}`);
-  return encoded;
-};
+const allowedCharacters = Object.keys(morseDictionary);
 
 /* Generate Morse code */
 const generateMorse = (inputText) => {
-  let morse = upperCase(inputText);
-  morse = encodeCharacters(morse);
-  return morse;
-};
+  let morse = inputText.toUpperCase(inputText);
+  let uniqueCharacters = Array.from(new Set(morse));
+  let found = uniqueCharacters.every((r) => allowedCharacters.indexOf(r) >= 0);
 
-/* Populate the output field on click 
-btnGenerate.addEventListener("click", function () {
-  console.log("[i] Generate Morse");
-  morseOutput.innerHTML = generateMorse(plaintextInput.value);
-});*/
+  if (found === true) {
+    morse = morse.replace(/./gi, (m) => morseDictionary[m]);
+    plaintextInput.style.borderColor = "black";
+    return morse;
+  } else {
+    plaintextInput.style.borderColor = "orangered";
+    //morseOutput.style.background = "black";
+    console.log(`[!] Illegal Symbol`);
+    //return `Remove the following illegal characters from the [YOUR MESSAGE] field:`;
+    return `Remove the illegal characters from the [YOUR MESSAGE] field!`;
+  }
+};
 
 /* Populate the output field on change */
 plaintextInput.addEventListener(
   "input",
   (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
 );
+
+/* Populate the output field on click 
+btnGenerate.addEventListener("click", function () {
+  console.log("[i] Generate Morse");
+  morseOutput.innerHTML = generateMorse(plaintextInput.value);
+});*/
