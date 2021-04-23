@@ -61,8 +61,11 @@ const allowedCharacters = Object.keys(morseDictionary);
 /* Generate Morse code */
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
-  let characters = Array.from(morse);
-  let lastCharacter = characters[characters.length - 1];
+  let uniqueCharacters = Array.from(new Set(morse));
+  //let characters = Array.from(morse);
+  //let lastCharacter = characters[characters.length - 1];
+
+  console.log(uniqueCharacters);
   /*
   for (const character of characters) {
     if (character in morseDictionary) {
