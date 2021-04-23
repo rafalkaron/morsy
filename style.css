@@ -41,9 +41,12 @@ div.app-body {
   margin-bottom: 5rem;
 }
 
-section.intro,
+section.intro {
+  margin-bottom: 3.5rem;
+}
+
 div.input {
-  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 section.in-out {
@@ -151,7 +154,7 @@ h2 {
   display: block;
   border: 3.5px solid black;
   border-radius: 5px;
-  margin: 0.75rem 0;
+  margin: 0;
   min-width: 100%;
   min-height: 100px;
   height: fit-content;
