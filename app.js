@@ -56,12 +56,14 @@ const morseDictionary = {
   " ": "/",
 };
 
+const allowedCharacters = Object.keys(morseDictionary);
+
 /* Generate Morse code */
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
   let characters = Array.from(morse);
   let lastCharacter = characters[characters.length - 1];
-
+  /*
   for (const character of characters) {
     if (character in morseDictionary) {
       console.log(`[Valid character]${character}`);
@@ -72,7 +74,7 @@ const generateMorse = (inputText) => {
       morseOutput.style.background = "black";
       //morse.output.style.content = "Invalid input";
     }
-  }
+  }*/
 
   morse = morse.replace(/./gi, (m) => morseDictionary[m]);
   console.log(`[Encode] ${morse}`);
