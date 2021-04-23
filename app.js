@@ -4,10 +4,13 @@ const morseOutput = document.getElementById("morseOutput");
 /* Character:Morse Dictionary */
 const morseDictionary = {
   A: ".-",
+  Ą: ".-.-",
   B: "-...",
   C: "-.-.",
+  Ć: "-.-..",
   D: "-..",
   E: ".",
+  Ę: "..-..",
   F: "..-.",
   G: "--.",
   H: "....",
@@ -15,20 +18,26 @@ const morseDictionary = {
   J: ".---",
   K: "-.-",
   L: ".-..",
+  Ł: ".-..-",
   M: "--",
   N: "-.",
+  Ń: "--.--",
   O: "---",
+  Ó: "---.",
   P: ".--.",
   Q: "--.-",
   R: ".-.",
   S: "...",
+  Ś: "...-...",
   T: "-",
   U: "..-",
   V: "...-",
   W: ".--",
   X: "-..-",
+  Ź: "--..-.",
   Y: "-.--",
   Z: "--..",
+  Ż: "--..-",
 
   1: ".----",
   2: "..---",
@@ -66,9 +75,13 @@ const generateMorse = (inputText) => {
 
   if (found === true) {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
+    plaintextInput.style.borderColor = "black";
     return morse;
   } else {
-    console.log("error!");
+    plaintextInput.style.borderColor = "orangered";
+    //morseOutput.style.background = "black";
+    return "illegal symbol";
+    console.log("[!] Illegal Symbol");
   }
 };
 
