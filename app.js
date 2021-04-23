@@ -62,26 +62,14 @@ const allowedCharacters = Object.keys(morseDictionary);
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
   let uniqueCharacters = Array.from(new Set(morse));
-  //let characters = Array.from(morse);
-  //let lastCharacter = characters[characters.length - 1];
+  let found = uniqueCharacters.every((r) => allowedCharacters.indexOf(r) >= 0);
 
-  console.log(uniqueCharacters);
-  /*
-  for (const character of characters) {
-    if (character in morseDictionary) {
-      console.log(`[Valid character]${character}`);
-      plaintextInput.style.borderColor = "black";
-      morseOutput.style.background = "white";
-    } else {
-      plaintextInput.style.borderColor = "orangered";
-      morseOutput.style.background = "black";
-      //morse.output.style.content = "Invalid input";
-    }
-  }*/
-
-  morse = morse.replace(/./gi, (m) => morseDictionary[m]);
-  console.log(`[Encode] ${morse}`);
-  return morse;
+  if (found === true) {
+    morse = morse.replace(/./gi, (m) => morseDictionary[m]);
+    return morse;
+  } else {
+    console.log("error!");
+  }
 };
 
 /* Populate the output field on change */
