@@ -80,8 +80,9 @@ const generateMorse = (inputText) => {
   } else {
     plaintextInput.style.borderColor = "orangered";
     //morseOutput.style.background = "black";
-    return "illegal symbol";
-    console.log("[!] Illegal Symbol");
+    console.log(`[!] Illegal Symbol`);
+    //return `Remove the following illegal characters from the [YOUR MESSAGE] field:`;
+    return `Remove the illegal characters from the [YOUR MESSAGE] field!`;
   }
 };
 
