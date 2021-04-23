@@ -72,6 +72,9 @@ const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
   let uniqueCharacters = Array.from(new Set(morse));
   let found = uniqueCharacters.every((r) => allowedCharacters.indexOf(r) >= 0);
+  let invalidCharacters = uniqueCharacters.filter(
+    (el) => !allowedCharacters.includes(el)
+  );
 
   if (found === true) {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
@@ -81,8 +84,8 @@ const generateMorse = (inputText) => {
     plaintextInput.style.borderColor = "orangered";
     //morseOutput.style.background = "black";
     console.log(`[!] Illegal Symbol`);
-    //return `Remove the following illegal characters from the [YOUR MESSAGE] field:`;
-    return `Remove the illegal characters from the [YOUR MESSAGE] field!`;
+    return `Remove the following illegal characters from the [YOUR MESSAGE] field: \r\n
+    ${invalidCharacters.join("and ")}`;
   }
 };
 
