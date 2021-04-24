@@ -1,7 +1,7 @@
 const plaintextInput = document.getElementById("plaintextInput");
 const morseOutput = document.getElementById("morseOutput");
 const btnLight = document.getElementById("btnLight");
-const elem = document.documentElement;
+const rootPageElement = document.documentElement;
 
 /* Character:Morse Dictionary */
 const morseDictionary = {
@@ -106,14 +106,14 @@ plaintextInput.addEventListener(
 
 /* View in fullscreen */
 function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
+  if (rootPageElement.requestFullscreen) {
+    rootPageElement.requestFullscreen();
+  } else if (rootPageElement.webkitRequestFullscreen) {
     /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
+    rootPageElement.webkitRequestFullscreen();
+  } else if (rootPageElement.msRequestFullscreen) {
     /* IE11 */
-    elem.msRequestFullscreen();
+    rootPageElement.msRequestFullscreen();
   }
 }
 
@@ -134,4 +134,6 @@ function closeFullscreen() {
 btnLight.addEventListener("click", function () {
   console.log("[i] Light");
   openFullscreen();
+
+  rootPageElement.style.backgroundColor = "orange";
 });
