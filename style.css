@@ -168,6 +168,7 @@ h2 {
   padding: 0.5rem;
   font-size: 1.35rem;
   font-weight: 500;
+  color: var(--dark-color);
 }
 
 div.controls {

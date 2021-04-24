@@ -74,6 +74,7 @@ const allowedCharacters = Object.keys(morseDictionary);
 
 morseOutput.innerHTML =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+morseOutput.style.color = "#757575";
 
 /* Generate Morse code */
 const generateMorse = (inputText) => {
