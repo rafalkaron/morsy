@@ -72,17 +72,26 @@ const morseDictionary = {
 
 const allowedCharacters = Object.keys(morseDictionary);
 
+morseOutput.innerHTML =
+  ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+
 /* Generate Morse code */
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
   morse = morse.replace(/(\r\n|\n|\r)/gm, "");
+  morse = morse.replace(/  +/g, " ");
   let uniqueCharacters = Array.from(new Set(morse));
   let found = uniqueCharacters.every((r) => allowedCharacters.indexOf(r) >= 0);
   let invalidCharacters = uniqueCharacters.filter(
     (el) => !allowedCharacters.includes(el)
   );
 
-  if (found === true) {
+  if (plaintextInput.value === "") {
+    plaintextInput.style.borderColor = "black";
+    morseOutput.style.color = "#757575";
+    morseOutput.style.fontWeight = "500";
+    return ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+  } else if (found === true && plaintextInput.value !== "") {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
     plaintextInput.style.borderColor = "black";
     morseOutput.style.color = "black";
@@ -104,11 +113,6 @@ plaintextInput.addEventListener(
   (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
 );
 
-if (plaintextInput.value === "") {
-  morseOutput.innerHTML =
-    ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
-}
-
 /* View in fullscreen */
 function openFullscreen() {
   if (rootPageElement.requestFullscreen) {
@@ -122,21 +126,6 @@ function openFullscreen() {
   }
 }
 
-/* Close fullscreen */
-function closeFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) {
-    /* Safari */
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) {
-    /* IE11 */
-    document.msExitFullscreen();
-  }
-}
-
-const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-
 /* Init strobo */
 btnLight.addEventListener("click", function () {
   console.log("[i] Light");
@@ -144,6 +133,6 @@ btnLight.addEventListener("click", function () {
 
   for (symbol in morseOutput.value) {
     console.log(symbol);
-    rootPageElement.style.backgroundColor = "#" + randomColor;
+    rootPageElement.style.backgroundColor = "orange";
   }
 });
