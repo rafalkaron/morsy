@@ -98,14 +98,16 @@ const generateMorse = (inputText) => {
   }
 };
 
-morseOutput.innerHTML =
-  ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
-
 /* Populate the output field on change */
 plaintextInput.addEventListener(
   "input",
   (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
 );
+
+if (plaintextInput.value === "") {
+  morseOutput.innerHTML =
+    ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+}
 
 /* View in fullscreen */
 function openFullscreen() {
