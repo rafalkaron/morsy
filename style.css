@@ -170,14 +170,14 @@ h2 {
 div.controls {
   display: flex;
   flex-wrap: wrap;
-  justify-content: left;
-  margin: 0 -0.5rem;
+  justify-content: flex-end;
+  margin: 0.5rem -0.5rem;
 }
 
 div.controls button {
   border-radius: 5px;
   border: 2.5px solid black;
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 1rem;
   font-weight: bold;
   font-family: "Bungee", Arial, Helvetica, sans-serif;
   margin: 0.25rem 0.5rem;
