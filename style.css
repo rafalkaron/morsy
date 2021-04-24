@@ -16,7 +16,7 @@ html {
 }
 
 ::selection {
-  background-color: #118ab2;
+  background-color: #118ab275;
 }
 /* END - GENERAL */
 
@@ -185,15 +185,19 @@ div.controls button {
   background-color: white;
 }
 
-div.controls button:hover,
-div.controls button:focus {
+div.controls button:hover {
   color: white;
   background-color: black;
 }
 
-div.controls button:focus {
+div.controls button:active {
+  color: white;
   background-color: #118ab2;
 }
+
+/* div.controls button:focus {
+  background-color: #118ab2;
+} */
 /* END - UICONTROLS */
 
 @media only screen and (max-width: 1200px) {
