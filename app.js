@@ -63,6 +63,9 @@ const morseDictionary = {
   "&": ".-...",
   "-": "-....-",
   " ": "/",
+  "=": "-...-",
+  "+": ".-.-.",
+  "@": ".--.-.",
 };
 
 const allowedCharacters = Object.keys(morseDictionary);
@@ -70,6 +73,7 @@ const allowedCharacters = Object.keys(morseDictionary);
 /* Generate Morse code */
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
+  morse = morse.replace(/(\r\n|\n|\r)/gm, "");
   let uniqueCharacters = Array.from(new Set(morse));
   let found = uniqueCharacters.every((r) => allowedCharacters.indexOf(r) >= 0);
   let invalidCharacters = uniqueCharacters.filter(
@@ -79,13 +83,16 @@ const generateMorse = (inputText) => {
   if (found === true) {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
     plaintextInput.style.borderColor = "black";
+    morseOutput.style.color = "black";
+    morseOutput.style.fontWeight = "500";
     return morse;
   } else {
-    plaintextInput.style.borderColor = "orangered";
-    //morseOutput.style.background = "black";
+    plaintextInput.style.borderColor = "#B33C1B";
+    morseOutput.style.fontWeight = "bold";
+    morseOutput.style.color = "#B33C1B";
     console.log(`[!] Illegal Symbol`);
-    return `Remove the following illegal characters from the [YOUR MESSAGE] field: \r\n
-    ${invalidCharacters.join("and ")}`;
+    return `From your message above, remove the following untranslatable characters: \r\n
+    ${invalidCharacters.join(", ")}`;
   }
 };
 
