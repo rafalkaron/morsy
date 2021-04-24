@@ -1,5 +1,7 @@
 const plaintextInput = document.getElementById("plaintextInput");
 const morseOutput = document.getElementById("morseOutput");
+const btnLight = document.getElementById("btnLight");
+const elem = document.documentElement;
 
 /* Character:Morse Dictionary */
 const morseDictionary = {
@@ -102,8 +104,34 @@ plaintextInput.addEventListener(
   (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
 );
 
-/* Populate the output field on click 
-btnGenerate.addEventListener("click", function () {
-  console.log("[i] Generate Morse");
-  morseOutput.innerHTML = generateMorse(plaintextInput.value);
-});*/
+/* View in fullscreen */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+/* Close fullscreen */
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+
+/* Init strobo */
+btnLight.addEventListener("click", function () {
+  console.log("[i] Light");
+  openFullscreen();
+});

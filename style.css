@@ -37,10 +37,6 @@ main {
   margin-bottom: 2rem;
 }
 
-div.app-body {
-  margin-bottom: 5rem;
-}
-
 section.intro {
   margin-bottom: 3.5rem;
 }
@@ -247,3 +243,11 @@ div.controls button:active {
 }
 
 /* TALL SCREENS - END */
+
+:fullscreen body {
+  display: none;
+}
+
+:fullscreen {
+  background-color: #000;
+}
