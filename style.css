@@ -1,10 +1,17 @@
 /* START - GENERAL */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Poppins:wght@400;500&display=swap');
+
+:root {
+  --accent-color: #118ab2;
+  --dark-color: #000;
+  --light-color: #fff;
+}
+
 html {
   font-size: 75%;
   max-height: 100vh;
-  background-color: #118ab2;
+  background-color: var(--accent-color);
   scroll-behavior: smooth;
 }
 
@@ -16,7 +23,7 @@ html {
 }
 
 ::selection {
-  background-color: #118ab2;
+  background-color: #118ab275;
 }
 /* END - GENERAL */
 
@@ -25,20 +32,16 @@ body {
   min-height: 90vh;
   min-width: 300px;
   padding: 2.5rem 5rem;
-  margin: 5vh 15vw;
-  border: 5px solid #222222;
+  margin: 5vh 25vw;
+  border: 5px solid var(--dark-color);
   border-radius: 1rem;
-  background-color: white;
+  background-color: var(--light-color);
   display: flex;
   flex-direction: column;
 }
 
 main {
   margin-bottom: 2rem;
-}
-
-div.app-body {
-  margin-bottom: 5rem;
 }
 
 section.intro {
@@ -58,7 +61,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  border-top: 3.5px solid black;
+  border-top: 3.5px solid var(--dark-color);
   margin: -2.5rem -5rem;
   margin-top: auto; 
   padding: 0 5rem;
@@ -66,7 +69,7 @@ footer {
 }
 
 div.footer-column {
-  color: #000;
+  color: var(--dark-color);
   font-weight: bold;
   font-size: 1.2rem;
   text-decoration: none;
@@ -83,7 +86,7 @@ div.footer-column.footer-copyright {
 }
 
 a.footer-link {
-  color: #000;
+  color: var(--dark-color);
   font-weight: bold;
   font-size: 1.2rem;
   text-decoration: none;
@@ -152,7 +155,7 @@ h2 {
 .plaintext-input,
 .morse-output {
   display: block;
-  border: 3.5px solid black;
+  border: 3.5px solid var(--dark-color);
   border-radius: 5px;
   margin: 0;
   min-width: 100%;
@@ -170,33 +173,37 @@ h2 {
 div.controls {
   display: flex;
   flex-wrap: wrap;
-  justify-content: left;
-  margin: 0 -0.5rem;
+  justify-content: flex-end;
+  margin: 0.5rem -0.5rem;
 }
 
 div.controls button {
   border-radius: 5px;
-  border: 2.5px solid black;
-  padding: 0.5rem 1rem;
+  border: 2.5px solid var(--dark-color);
+  padding: 0.25rem 1rem;
   font-weight: bold;
   font-family: "Bungee", Arial, Helvetica, sans-serif;
   margin: 0.25rem 0.5rem;
   font-size: 1rem;
-  background-color: white;
+  background-color: var(--light-color);
 }
 
-div.controls button:hover,
-div.controls button:focus {
-  color: white;
+div.controls button:hover {
+  color: var(--light-color);
   background-color: black;
 }
 
-div.controls button:focus {
-  background-color: #118ab2;
+div.controls button:active {
+  color: var(--light-color);
+  background-color: var(--accent-color);
 }
+
+/* div.controls button:focus {
+  background-color: #118ab2;
+} */
 /* END - UICONTROLS */
 
-@media only screen and (min-width: 920px) {
+@media only screen and (max-width: 1200px) {
   body {
     margin: 5vh 20vw;
   }
@@ -243,3 +250,11 @@ div.controls button:focus {
 }
 
 /* TALL SCREENS - END */
+
+:fullscreen body {
+  display: none;
+}
+
+:fullscreen {
+  background-color: #000;
+}
