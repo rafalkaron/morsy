@@ -78,7 +78,9 @@ morseOutput.innerHTML =
 /* Generate Morse code */
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
+  /* Remove enters */
   morse = morse.replace(/(\r\n|\n|\r)/gm, "");
+  /* Replace multiple spaces with a single space */
   morse = morse.replace(/  +/g, " ");
   let uniqueCharacters = Array.from(new Set(morse));
   let found = uniqueCharacters.every((r) => allowedCharacters.indexOf(r) >= 0);
