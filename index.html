@@ -45,7 +45,7 @@
   </main>
   <footer>
     <div class="footer-column footer-copyright">
-      Copyright © 2021
+      Copyright © <span id="year"></span>
       <a class="footer-link" href="https://rafalkaron.github.io" target="blank">Rafał Karoń</a>.
     </div>
     <div class="footer-column footer-contact">
@@ -63,5 +63,8 @@
     </div>
   </footer>
 </body>
+<script>
+  document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
 <script src="app.js"></script>
 </html>
