@@ -144,13 +144,21 @@ btnLight.addEventListener("click", function () {
 
 btnPlay.addEventListener("click", function () {
   console.log("[i] Play");
-  for (symbol in morseOutput.value) {
+  morseOutputArray = Array.from(morseOutput.value);
+
+  morseOutputArray.forEach(function (symbol, index) {
+    console.log(symbol);
+
     if (symbol === ".") {
       console.log("dot");
     } else if (symbol === "-") {
       console.log("dash");
+    } else if (symbol === " ") {
+      console.log("break");
+    } else if (symbol === "/") {
+      console.log("space");
     } else {
       console.log("[!]unknown symbol");
     }
-  }
+  });
 });
