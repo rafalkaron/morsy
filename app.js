@@ -149,6 +149,9 @@ btnLight.addEventListener("click", function () {
 */
 
 /* BEEPER */
+const soundDot = new Audio("assets/beeps/dot.mp3");
+const soundDash = new Audio("assets/beeps/dash.mp3");
+
 btnPlay.addEventListener("click", function () {
   console.log("[i] Play");
   morseOutputArray = Array.from(morseOutput.value);
@@ -156,8 +159,10 @@ btnPlay.addEventListener("click", function () {
   morseOutputArray.forEach(function (symbol, index) {
     if (symbol === ".") {
       console.log(`${symbol} : dot`);
+      soundDot.play();
     } else if (symbol === "-") {
       console.log(`${symbol} : dash`);
+      soundDash.play();
     } else if (symbol === " ") {
       console.log(`${symbol} : break`);
     } else if (symbol === "/") {
