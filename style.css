@@ -5,6 +5,7 @@
 :root {
   --accent-color: #118ab2;
   --dark-color: #000;
+  --gray-color: rgb(128, 128, 128);
   --light-color: #fff;
 }
 
@@ -178,7 +179,7 @@ div.controls {
   margin: 0.5rem -0.5rem;
 }
 
-div.controls button {
+button {
   border-radius: 5px;
   border: 2.5px solid var(--dark-color);
   padding: 0.25rem 1rem;
@@ -189,14 +190,22 @@ div.controls button {
   background-color: var(--light-color);
 }
 
-div.controls button:hover {
+button:hover {
   color: var(--light-color);
   background-color: black;
 }
 
-div.controls button:active {
+button:active {
   color: var(--light-color);
   background-color: var(--accent-color);
+}
+
+button.disabled,
+button.disabled:focus,
+button.disabled:active {
+  border-color: var(--gray-color);
+  color: var(--gray-color);
+  background-color: var(--light-color);
 }
 
 /* div.controls button:focus {

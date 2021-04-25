@@ -94,18 +94,24 @@ const generateMorse = (inputText) => {
     plaintextInput.style.borderColor = "black";
     morseOutput.style.color = "#757575";
     morseOutput.style.fontWeight = "500";
+    btnPlay.classList.remove("disabled");
+    btnPlay.disabled = false;
     return ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
   } else if (found === true && plaintextInput.value !== "") {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
     plaintextInput.style.borderColor = "black";
     morseOutput.style.color = "black";
     morseOutput.style.fontWeight = "500";
+    btnPlay.classList.remove("disabled");
+    btnPlay.disabled = false;
     return morse;
   } else {
     plaintextInput.style.borderColor = "#B33C1B";
     morseOutput.style.fontWeight = "bold";
     morseOutput.style.color = "#B33C1B";
     console.log(`[!] Illegal Symbol`);
+    btnPlay.classList.add("disabled");
+    btnPlay.disabled = true;
     return `From your message above, remove the following untranslatable characters: \r\n
     ${invalidCharacters.join(", ")}`;
   }
@@ -142,6 +148,7 @@ btnLight.addEventListener("click", function () {
 });
 */
 
+/* BEEPER */
 btnPlay.addEventListener("click", function () {
   console.log("[i] Play");
   morseOutputArray = Array.from(morseOutput.value);
