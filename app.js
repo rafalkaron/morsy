@@ -160,13 +160,17 @@ btnPlay.addEventListener("click", function () {
     if (symbol === ".") {
       console.log(`${symbol} : dot`);
       soundDot.play();
+      setTimeout(1000);
     } else if (symbol === "-") {
       console.log(`${symbol} : dash`);
       soundDash.play();
+      setTimeout(1000);
     } else if (symbol === " ") {
       console.log(`${symbol} : break`);
+      setTimeout(1000);
     } else if (symbol === "/") {
       console.log(`${symbol} : space`);
+      setTimeout(1000);
     } else {
       console.log(`${symbol} : UNKNOWN`);
     }
