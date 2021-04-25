@@ -1,6 +1,7 @@
 const plaintextInput = document.getElementById("plaintextInput");
 const morseOutput = document.getElementById("morseOutput");
 const btnLight = document.getElementById("btnLight");
+const btnPlay = document.getElementById("btnPlay");
 const rootPageElement = document.documentElement;
 
 /* Character:Morse Dictionary */
@@ -140,3 +141,16 @@ btnLight.addEventListener("click", function () {
   }
 });
 */
+
+btnPlay.addEventListener("click", function () {
+  console.log("[i] Play");
+  for (symbol in morseOutput.value) {
+    if (symbol === ".") {
+      console.log("dot");
+    } else if (symbol === "-") {
+      console.log("dash");
+    } else {
+      console.log("[!]unknown symbol");
+    }
+  }
+});
