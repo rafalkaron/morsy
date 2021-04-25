@@ -147,18 +147,16 @@ btnPlay.addEventListener("click", function () {
   morseOutputArray = Array.from(morseOutput.value);
 
   morseOutputArray.forEach(function (symbol, index) {
-    console.log(symbol);
-
     if (symbol === ".") {
-      console.log("dot");
+      console.log(`${symbol} : dot`);
     } else if (symbol === "-") {
-      console.log("dash");
+      console.log(`${symbol} : dash`);
     } else if (symbol === " ") {
-      console.log("break");
+      console.log(`${symbol} : break`);
     } else if (symbol === "/") {
-      console.log("space");
+      console.log(`${symbol} : space`);
     } else {
-      console.log("[!]unknown symbol");
+      console.log(`${symbol} : UNKNOWN`);
     }
   });
 });
