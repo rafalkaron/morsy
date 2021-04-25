@@ -129,7 +129,7 @@ function openFullscreen() {
   }
 }
 
-/* Init strobo */
+/* Init strobo 
 btnLight.addEventListener("click", function () {
   console.log("[i] Light");
   openFullscreen();
@@ -139,3 +139,4 @@ btnLight.addEventListener("click", function () {
     rootPageElement.style.backgroundColor = "orange";
   }
 });
+*/
