@@ -156,25 +156,22 @@ btnPlay.addEventListener("click", function () {
   console.clear();
   console.log("[i] Play");
   morseOutputArray = Array.from(morseOutput.value);
-
-  for (symbol of morseOutputArray) {
-    //morseOutputArray.forEach(function (symbol, index) {
-    if (symbol === ".") {
-      console.log(`${symbol} : dot`);
-      soundDot.play();
-      setTimeout(1000);
-    } else if (symbol === "-") {
-      console.log(`${symbol} : dash`);
-      soundDash.play();
-      setTimeout(1000);
-    } else if (symbol === " ") {
-      console.log(`${symbol} : break`);
-      setTimeout(1000);
-    } else if (symbol === "/") {
-      console.log(`${symbol} : space`);
-      setTimeout(1000);
-    } else {
-      console.log(`${symbol} : UNKNOWN`);
+  setTimeout(function () {
+    for (symbol of morseOutputArray) {
+      //morseOutputArray.forEach(function (symbol, index) {
+      if (symbol === ".") {
+        console.log(`${symbol} : dot`);
+        soundDot.play();
+      } else if (symbol === "-") {
+        console.log(`${symbol} : dash`);
+        soundDash.play();
+      } else if (symbol === " ") {
+        console.log(`${symbol} : break`);
+      } else if (symbol === "/") {
+        console.log(`${symbol} : space`);
+      } else {
+        console.log(`${symbol} : UNKNOWN`);
+      }
     }
-  }
+  }, 500);
 });
