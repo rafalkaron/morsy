@@ -159,6 +159,7 @@ btnLight.addEventListener("click", async function () {
     console.log("[i] Darkness");
     btnLight.blur();
     btnLight.classList.remove("focused");
+    rootPageElement.style.backgroundColor = "#118ab2";
   }
 });
 
