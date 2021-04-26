@@ -293,33 +293,56 @@ function openFullscreen() {
   }
 }
 
+light = false;
 btnLight.addEventListener("click", async function () {
-  console.log("[i] Light");
   let morseOutputArray = Array.from(morseOutput.value);
-  openFullscreen();
-  rootPageElement.style.backgroundColor = "black";
+  ///openFullscreen();
 
-  for (symbol of morseOutputArray) {
-    if (symbol === ".") {
-      console.log(`${symbol} : dot`);
-      await sleep(100);
-      rootPageElement.style.backgroundColor = "white";
-      await sleep(150);
-      rootPageElement.style.backgroundColor = "black";
-    } else if (symbol === "-") {
-      await sleep(100);
-      rootPageElement.style.backgroundColor = "white";
-      await sleep(315);
-      rootPageElement.style.backgroundColor = "black";
-    } else if (symbol === " ") {
-      console.log(`${symbol} : break`);
-      await sleep(100);
-    } else if (symbol === "/") {
-      console.log(`${symbol} : space`);
-      await sleep(150);
-    } else {
-      console.log(`${symbol} : UNKNOWN`);
+  if (light === false) {
+    light = true;
+    console.log("[i] Light");
+    btnLight.focus();
+    btnLight.classList.add("focused");
+  } else if (light === true) {
+    light = false;
+    console.log("[i] Darkness");
+    btnLight.blur();
+    btnLight.classList.remove("focused");
+  }
+
+  while (light === true) {
+    for (symbol of morseOutputArray) {
+      if (light === false) {
+        break;
+      } else if (symbol === ".") {
+        console.log(`${symbol} : dot`);
+        await sleep(100);
+        rootPageElement.style.backgroundColor = "white";
+        await sleep(150);
+        rootPageElement.style.backgroundColor = "black";
+      } else if (symbol === "-") {
+        await sleep(100);
+        rootPageElement.style.backgroundColor = "white";
+        await sleep(315);
+        rootPageElement.style.backgroundColor = "black";
+      } else if (symbol === " ") {
+        console.log(`${symbol} : break`);
+        await sleep(100);
+      } else if (symbol === "/") {
+        console.log(`${symbol} : space`);
+        await sleep(150);
+      } else {
+        console.log(`${symbol} : UNKNOWN`);
+      }
+    }
+
+    if (repeat === false) {
+      break;
     }
   }
+  light = false;
+  console.log("[i] Darkness");
+  btnLight.blur();
+  btnLight.classList.remove("focused");
   rootPageElement.style.backgroundColor = "#118ab2";
 });
