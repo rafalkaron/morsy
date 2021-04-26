@@ -208,5 +208,7 @@ btnPlay.addEventListener("click", async function () {
   }
   btnPlay.classList.remove("disabled");
   btnPlay.disabled = false;
+  btnStop.classList.add("disabled");
+  btnStop.disabled = true;
   plaintextInput.disabled = false;
 });
