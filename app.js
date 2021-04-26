@@ -5,6 +5,10 @@ const btnPlay = document.getElementById("btnPlay");
 const btnStop = document.getElementById("btnStop");
 const rootPageElement = document.documentElement;
 
+/* Place cursor in the input field automatically */
+plaintextInput.focus();
+plaintextInput.select();
+
 /* Character:Morse Dictionary */
 const morseDictionary = {
   A: ".- ",
