@@ -200,7 +200,8 @@ button:active {
   background-color: var(--accent-color);
 }
 
-button:focus {
+button:focus,
+button.focused {
   background-color: var(--accent-color);
   color: var(--light-color);
 }

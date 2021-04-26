@@ -173,10 +173,12 @@ btnRepeat.addEventListener("click", function () {
     repeat = true;
     console.log("[i] Repeat");
     btnRepeat.focus();
+    btnRepeat.classList.add("focused");
   } else if (repeat === true) {
     repeat = false;
     console.log("[i] Don't repeat");
     btnRepeat.blur();
+    btnRepeat.classList.remove("focused");
   }
 });
 
@@ -208,6 +210,7 @@ btnPlay.addEventListener("click", async function () {
         plaintextInput.disabled = false;
         repeat = false;
         btnRepeat.blur();
+        btnRepeat.classList.remove("focused");
         break;
       }
       if (symbol === ".") {
