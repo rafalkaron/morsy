@@ -200,6 +200,11 @@ button:active {
   background-color: var(--accent-color);
 }
 
+button:focus {
+  background-color: var(--accent-color);
+  color: var(--light-color);
+}
+
 button.disabled,
 button.disabled:focus,
 button.disabled:active {

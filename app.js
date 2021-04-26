@@ -3,6 +3,7 @@ const morseOutput = document.getElementById("morseOutput");
 const btnLight = document.getElementById("btnLight");
 const btnPlay = document.getElementById("btnPlay");
 const btnStop = document.getElementById("btnStop");
+const btnRepeat = document.getElementById("btnRepeat");
 const rootPageElement = document.documentElement;
 
 /* Place cursor in the input field automatically */
@@ -163,6 +164,20 @@ function sleep(ms) {
 btnStop.classList.add("disabled");
 btnStop.disabled = true;
 
+/* Repeat */
+let repeat = false;
+btnRepeat.addEventListener("click", function () {
+  if (repeat === false) {
+    repeat = true;
+    console.log("[i] Repeat");
+    btnRepeat.focus();
+  } else if (repeat === true) {
+    repeat = false;
+    console.log("[i] Don't repeat");
+    btnRepeat.blur();
+  }
+});
+
 btnPlay.addEventListener("click", async function () {
   console.clear();
   console.log("[i] Play");
@@ -210,6 +225,9 @@ btnPlay.addEventListener("click", async function () {
       } else {
         console.log(`${symbol} : UNKNOWN`);
       }
+    }
+    if (repeat === false) {
+      break;
     }
   }
   btnPlay.classList.remove("disabled");
