@@ -4,6 +4,7 @@ const btnLight = document.getElementById("btnLight");
 const btnPlay = document.getElementById("btnPlay");
 const btnStop = document.getElementById("btnStop");
 const btnRepeat = document.getElementById("btnRepeat");
+const btnClear = document.getElementById("btnClear");
 const rootPageElement = document.documentElement;
 
 /* Place cursor in the input field automatically */
@@ -191,6 +192,8 @@ btnPlay.addEventListener("click", async function () {
   btnPlay.disabled = true;
   btnStop.classList.remove("disabled");
   btnStop.disabled = false;
+  btnClear.disabled = true;
+  btnClear.classList.add("disabled");
   plaintextInput.disabled = true;
 
   await sleep(250);
@@ -242,4 +245,16 @@ btnPlay.addEventListener("click", async function () {
   btnStop.classList.add("disabled");
   btnStop.disabled = true;
   plaintextInput.disabled = false;
+  btnClear.disabled = false;
+  btnClear.classList.remove("disabled");
+});
+
+/* Clear */
+btnClear.addEventListener("click", function () {
+  plaintextInput.value = null;
+  morseOutput.innerHTML =
+    ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+  plaintextInput.focus();
+  plaintextInput.select();
+  btnClear.blur();
 });
