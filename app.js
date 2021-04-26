@@ -164,23 +164,25 @@ btnPlay.addEventListener("click", async function () {
 
   let morseOutputArray = Array.from(morseOutput.value);
 
-  for await (symbol of morseOutputArray) {
+  await sleep(250);
+
+  for (symbol of morseOutputArray) {
     if (symbol === ".") {
-      console.log(` : ${symbol} : dot`);
+      console.log(`${symbol} : dot`);
       soundDot.play();
       await sleep(soundDotDuration + 500);
     } else if (symbol === "-") {
-      console.log(` : ${symbol} : dash`);
+      console.log(`${symbol} : dash`);
       soundDash.play();
       await sleep(soundDashDuration + 500);
     } else if (symbol === " ") {
-      console.log(` : ${symbol} : break`);
-      await sleep(500);
+      console.log(`${symbol} : break`);
+      await sleep(250);
     } else if (symbol === "/") {
-      console.log(` : ${symbol} : space`);
-      await sleep(1000);
+      console.log(`${symbol} : space`);
+      await sleep(500);
     } else {
-      console.log(` : ${symbol} : UNKNOWN`);
+      console.log(`${symbol} : UNKNOWN`);
     }
   }
 });
