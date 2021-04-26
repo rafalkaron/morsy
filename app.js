@@ -153,6 +153,10 @@ const soundDash = new Audio("assets/beeps/dash.mp3");
 const soundDotDuration = soundDot.duration;
 const soundDashDuration = soundDash.duration;
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 btnPlay.addEventListener("click", async function () {
   console.clear();
 
@@ -164,13 +168,17 @@ btnPlay.addEventListener("click", async function () {
     if (symbol === ".") {
       console.log(` : ${symbol} : dot`);
       soundDot.play();
+      await sleep(soundDotDuration + 500);
     } else if (symbol === "-") {
       console.log(` : ${symbol} : dash`);
       soundDash.play();
+      await sleep(soundDashDuration + 500);
     } else if (symbol === " ") {
       console.log(` : ${symbol} : break`);
+      await sleep(500);
     } else if (symbol === "/") {
       console.log(` : ${symbol} : space`);
+      await sleep(1000);
     } else {
       console.log(` : ${symbol} : UNKNOWN`);
     }
