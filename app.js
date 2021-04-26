@@ -5,6 +5,7 @@ const btnPlay = document.getElementById("btnPlay");
 const btnStop = document.getElementById("btnStop");
 const btnRepeat = document.getElementById("btnRepeat");
 const btnClear = document.getElementById("btnClear");
+const btnPause = document.getElementById("btnPause");
 const rootPageElement = document.documentElement;
 
 /* Place cursor in the input field automatically */
@@ -166,6 +167,8 @@ function sleep(ms) {
 
 btnStop.classList.add("disabled");
 btnStop.disabled = true;
+btnPause.classList.add("disabled");
+btnPause.disabled = true;
 
 /* Repeat */
 let repeat = false;
@@ -192,24 +195,62 @@ btnPlay.addEventListener("click", async function () {
   btnPlay.disabled = true;
   btnStop.classList.remove("disabled");
   btnStop.disabled = false;
+  btnPause.classList.remove("disabled");
+  btnPause.disabled = false;
   btnClear.disabled = true;
   btnClear.classList.add("disabled");
   plaintextInput.disabled = true;
 
   await sleep(250);
 
+  /* Stop */
   let play = true;
-
   btnStop.addEventListener("click", function () {
     play = false;
     console.log("[i] Stop playing");
   });
 
+  /* Pause */
+  let pause = false;
+  btnPause.addEventListener("click", function () {
+    if (pause === false) {
+      pause = true;
+      console.log("[i] Pause");
+      btnPause.focus();
+      btnPause.classList.add("focused");
+    } else if (pause === true) {
+      pause = false;
+      console.log("[i] Continue");
+      btnPause.blur();
+      btnPause.classList.remove("focused");
+    }
+  });
+
   while (play === true) {
     for (symbol of morseOutputArray) {
+      while (pause === true) {
+        await sleep(500);
+        console.log("Paused...");
+
+        /* TODO: Remove duplicated code */
+        if (play === false) {
+          btnStop.classList.add("disabled");
+          btnStop.disabled = true;
+          btnPause.classList.add("disabled");
+          btnPause.disabled = true;
+          plaintextInput.disabled = false;
+          repeat = false;
+          btnRepeat.blur();
+          btnRepeat.classList.remove("focused");
+          break;
+        }
+      }
+
       if (play === false) {
         btnStop.classList.add("disabled");
         btnStop.disabled = true;
+        btnPause.classList.add("disabled");
+        btnPause.disabled = true;
         plaintextInput.disabled = false;
         repeat = false;
         btnRepeat.blur();
@@ -244,6 +285,8 @@ btnPlay.addEventListener("click", async function () {
   btnPlay.disabled = false;
   btnStop.classList.add("disabled");
   btnStop.disabled = true;
+  btnPause.classList.add("disabled");
+  btnPause.disabled = true;
   plaintextInput.disabled = false;
   btnClear.disabled = false;
   btnClear.classList.remove("disabled");
