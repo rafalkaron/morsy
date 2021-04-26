@@ -133,30 +133,6 @@ plaintextInput.addEventListener(
   (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
 );
 
-/* View in fullscreen */
-function openFullscreen() {
-  if (rootPageElement.requestFullscreen) {
-    rootPageElement.requestFullscreen();
-  } else if (rootPageElement.webkitRequestFullscreen) {
-    /* Safari */
-    rootPageElement.webkitRequestFullscreen();
-  } else if (rootPageElement.msRequestFullscreen) {
-    /* IE11 */
-    rootPageElement.msRequestFullscreen();
-  }
-}
-
-/* Init strobo 
-btnLight.addEventListener("click", function () {
-  console.log("[i] Light");
-  openFullscreen();
-
-  for (symbol in morseOutput.value) {
-    console.log(symbol);
-    rootPageElement.style.backgroundColor = "orange";
-  }
-});
-*/
 /* BEEPER */
 const soundDot = new Audio("assets/beeps/dot.mp3");
 const soundDash = new Audio("assets/beeps/dash.mp3");
@@ -301,4 +277,49 @@ btnClear.addEventListener("click", function () {
   plaintextInput.select();
   console.log("[i] Clear");
   btnClear.blur();
+});
+
+/* Lights */
+/* View in fullscreen */
+function openFullscreen() {
+  if (rootPageElement.requestFullscreen) {
+    rootPageElement.requestFullscreen();
+  } else if (rootPageElement.webkitRequestFullscreen) {
+    /* Safari */
+    rootPageElement.webkitRequestFullscreen();
+  } else if (rootPageElement.msRequestFullscreen) {
+    /* IE11 */
+    rootPageElement.msRequestFullscreen();
+  }
+}
+
+btnLight.addEventListener("click", async function () {
+  console.log("[i] Light");
+  let morseOutputArray = Array.from(morseOutput.value);
+  openFullscreen();
+  rootPageElement.style.backgroundColor = "black";
+
+  for (symbol of morseOutputArray) {
+    if (symbol === ".") {
+      console.log(`${symbol} : dot`);
+      await sleep(100);
+      rootPageElement.style.backgroundColor = "white";
+      await sleep(150);
+      rootPageElement.style.backgroundColor = "black";
+    } else if (symbol === "-") {
+      await sleep(100);
+      rootPageElement.style.backgroundColor = "white";
+      await sleep(315);
+      rootPageElement.style.backgroundColor = "black";
+    } else if (symbol === " ") {
+      console.log(`${symbol} : break`);
+      await sleep(100);
+    } else if (symbol === "/") {
+      console.log(`${symbol} : space`);
+      await sleep(150);
+    } else {
+      console.log(`${symbol} : UNKNOWN`);
+    }
+  }
+  rootPageElement.style.backgroundColor = "#118ab2";
 });
