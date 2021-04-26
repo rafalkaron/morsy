@@ -162,7 +162,7 @@ btnPlay.addEventListener("click", async function () {
 
   let morseOutputArray = Array.from(morseOutput.value);
 
-  await sleep(100);
+  await sleep(250);
 
   for (symbol of morseOutputArray) {
     if (symbol === ".") {
