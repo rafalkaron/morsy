@@ -105,6 +105,8 @@ const generateMorse = (inputText) => {
     return ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
   } else if (found === true && plaintextInput.value !== "") {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
+    /* Remove the redundant space at the end */
+    morse = morse.slice(0, -1);
     plaintextInput.style.borderColor = "black";
     morseOutput.style.color = "black";
     morseOutput.style.fontWeight = "500";
