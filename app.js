@@ -3,6 +3,7 @@ const morseOutput = document.getElementById("morseOutput");
 const btnLight = document.getElementById("btnLight");
 const btnPlay = document.getElementById("btnPlay");
 const btnStop = document.getElementById("btnStop");
+const btnRepeat = document.getElementById("btnRepeat");
 const rootPageElement = document.documentElement;
 
 /* Place cursor in the input field automatically */
@@ -104,6 +105,8 @@ const generateMorse = (inputText) => {
     return ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
   } else if (found === true && plaintextInput.value !== "") {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
+    /* Remove the redundant space at the end */
+    morse = morse.slice(0, -1);
     plaintextInput.style.borderColor = "black";
     morseOutput.style.color = "black";
     morseOutput.style.fontWeight = "500";
@@ -163,6 +166,20 @@ function sleep(ms) {
 btnStop.classList.add("disabled");
 btnStop.disabled = true;
 
+/* Repeat */
+let repeat = false;
+btnRepeat.addEventListener("click", function () {
+  if (repeat === false) {
+    repeat = true;
+    console.log("[i] Repeat");
+    btnRepeat.focus();
+  } else if (repeat === true) {
+    repeat = false;
+    console.log("[i] Don't repeat");
+    btnRepeat.blur();
+  }
+});
+
 btnPlay.addEventListener("click", async function () {
   console.clear();
   console.log("[i] Play");
@@ -183,31 +200,38 @@ btnPlay.addEventListener("click", async function () {
     console.log("[i] Stop playing");
   });
 
-  for (symbol of morseOutputArray) {
-    if (play === false) {
-      btnStop.classList.add("disabled");
-      btnStop.disabled = true;
-      plaintextInput.disabled = false;
-      break;
+  while (play === true) {
+    for (symbol of morseOutputArray) {
+      if (play === false) {
+        btnStop.classList.add("disabled");
+        btnStop.disabled = true;
+        plaintextInput.disabled = false;
+        repeat = false;
+        btnRepeat.blur();
+        break;
+      }
+      if (symbol === ".") {
+        console.log(`${symbol} : dot`);
+        await sleep(100);
+        soundDot.play();
+        await sleep(150);
+      } else if (symbol === "-") {
+        console.log(`${symbol} : dash`);
+        await sleep(100);
+        soundDash.play();
+        await sleep(315);
+      } else if (symbol === " ") {
+        console.log(`${symbol} : break`);
+        await sleep(100);
+      } else if (symbol === "/") {
+        console.log(`${symbol} : space`);
+        await sleep(150);
+      } else {
+        console.log(`${symbol} : UNKNOWN`);
+      }
     }
-    if (symbol === ".") {
-      console.log(`${symbol} : dot`);
-      await sleep(100);
-      soundDot.play();
-      await sleep(150);
-    } else if (symbol === "-") {
-      console.log(`${symbol} : dash`);
-      await sleep(100);
-      soundDash.play();
-      await sleep(315);
-    } else if (symbol === " ") {
-      console.log(`${symbol} : break`);
-      await sleep(100);
-    } else if (symbol === "/") {
-      console.log(`${symbol} : space`);
-      await sleep(150);
-    } else {
-      console.log(`${symbol} : UNKNOWN`);
+    if (repeat === false) {
+      break;
     }
   }
   btnPlay.classList.remove("disabled");
