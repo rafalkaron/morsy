@@ -206,6 +206,8 @@ btnPlay.addEventListener("click", async function () {
         btnStop.classList.add("disabled");
         btnStop.disabled = true;
         plaintextInput.disabled = false;
+        repeat = false;
+        btnRepeat.blur();
         break;
       }
       if (symbol === ".") {
