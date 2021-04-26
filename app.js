@@ -150,8 +150,6 @@ btnLight.addEventListener("click", function () {
 /* BEEPER */
 const soundDot = new Audio("assets/beeps/dot.mp3");
 const soundDash = new Audio("assets/beeps/dash.mp3");
-const soundDotDuration = soundDot.duration;
-const soundDashDuration = soundDash.duration;
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -164,23 +162,25 @@ btnPlay.addEventListener("click", async function () {
 
   let morseOutputArray = Array.from(morseOutput.value);
 
-  await sleep(250);
+  await sleep(100);
 
   for (symbol of morseOutputArray) {
     if (symbol === ".") {
       console.log(`${symbol} : dot`);
+      await sleep(100);
       soundDot.play();
-      await sleep(soundDotDuration + 500);
+      await sleep(150);
     } else if (symbol === "-") {
       console.log(`${symbol} : dash`);
+      await sleep(100);
       soundDash.play();
-      await sleep(soundDashDuration + 500);
+      await sleep(315);
     } else if (symbol === " ") {
       console.log(`${symbol} : break`);
-      await sleep(250);
+      await sleep(100);
     } else if (symbol === "/") {
       console.log(`${symbol} : space`);
-      await sleep(500);
+      await sleep(150);
     } else {
       console.log(`${symbol} : UNKNOWN`);
     }
