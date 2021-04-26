@@ -285,6 +285,7 @@ btnPlay.addEventListener("click", async function () {
       break;
     }
   }
+  rootPageElement.style.backgroundColor = "#118ab2";
   btnPlay.classList.remove("disabled");
   btnPlay.disabled = false;
   btnStop.classList.add("disabled");
