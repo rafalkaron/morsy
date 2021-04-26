@@ -183,31 +183,33 @@ btnPlay.addEventListener("click", async function () {
     console.log("[i] Stop playing");
   });
 
-  for (symbol of morseOutputArray) {
-    if (play === false) {
-      btnStop.classList.add("disabled");
-      btnStop.disabled = true;
-      plaintextInput.disabled = false;
-      break;
-    }
-    if (symbol === ".") {
-      console.log(`${symbol} : dot`);
-      await sleep(100);
-      soundDot.play();
-      await sleep(150);
-    } else if (symbol === "-") {
-      console.log(`${symbol} : dash`);
-      await sleep(100);
-      soundDash.play();
-      await sleep(315);
-    } else if (symbol === " ") {
-      console.log(`${symbol} : break`);
-      await sleep(100);
-    } else if (symbol === "/") {
-      console.log(`${symbol} : space`);
-      await sleep(150);
-    } else {
-      console.log(`${symbol} : UNKNOWN`);
+  while (play === true) {
+    for (symbol of morseOutputArray) {
+      if (play === false) {
+        btnStop.classList.add("disabled");
+        btnStop.disabled = true;
+        plaintextInput.disabled = false;
+        break;
+      }
+      if (symbol === ".") {
+        console.log(`${symbol} : dot`);
+        await sleep(100);
+        soundDot.play();
+        await sleep(150);
+      } else if (symbol === "-") {
+        console.log(`${symbol} : dash`);
+        await sleep(100);
+        soundDash.play();
+        await sleep(315);
+      } else if (symbol === " ") {
+        console.log(`${symbol} : break`);
+        await sleep(100);
+      } else if (symbol === "/") {
+        console.log(`${symbol} : space`);
+        await sleep(150);
+      } else {
+        console.log(`${symbol} : UNKNOWN`);
+      }
     }
   }
   btnPlay.classList.remove("disabled");
