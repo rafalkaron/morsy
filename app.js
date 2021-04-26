@@ -256,5 +256,6 @@ btnClear.addEventListener("click", function () {
     ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
   plaintextInput.focus();
   plaintextInput.select();
+  console.log("[i] Clear");
   btnClear.blur();
 });
