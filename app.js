@@ -147,31 +147,32 @@ btnLight.addEventListener("click", function () {
   }
 });
 */
-
 /* BEEPER */
 const soundDot = new Audio("assets/beeps/dot.mp3");
 const soundDash = new Audio("assets/beeps/dash.mp3");
+const soundDotDuration = soundDot.duration;
+const soundDashDuration = soundDash.duration;
 
-btnPlay.addEventListener("click", function () {
+btnPlay.addEventListener("click", async function () {
   console.clear();
+
   console.log("[i] Play");
-  morseOutputArray = Array.from(morseOutput.value);
-  setTimeout(function () {
-    for (symbol of morseOutputArray) {
-      //morseOutputArray.forEach(function (symbol, index) {
-      if (symbol === ".") {
-        console.log(`${symbol} : dot`);
-        soundDot.play();
-      } else if (symbol === "-") {
-        console.log(`${symbol} : dash`);
-        soundDash.play();
-      } else if (symbol === " ") {
-        console.log(`${symbol} : break`);
-      } else if (symbol === "/") {
-        console.log(`${symbol} : space`);
-      } else {
-        console.log(`${symbol} : UNKNOWN`);
-      }
+
+  let morseOutputArray = Array.from(morseOutput.value);
+
+  for await (symbol of morseOutputArray) {
+    if (symbol === ".") {
+      console.log(` : ${symbol} : dot`);
+      soundDot.play();
+    } else if (symbol === "-") {
+      console.log(` : ${symbol} : dash`);
+      soundDash.play();
+    } else if (symbol === " ") {
+      console.log(` : ${symbol} : break`);
+    } else if (symbol === "/") {
+      console.log(` : ${symbol} : space`);
+    } else {
+      console.log(` : ${symbol} : UNKNOWN`);
     }
-  }, 500);
+  }
 });
