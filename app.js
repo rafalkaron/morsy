@@ -2,6 +2,7 @@ const plaintextInput = document.getElementById("plaintextInput");
 const morseOutput = document.getElementById("morseOutput");
 const btnLight = document.getElementById("btnLight");
 const btnPlay = document.getElementById("btnPlay");
+const btnStop = document.getElementById("btnStop");
 const rootPageElement = document.documentElement;
 
 /* Character:Morse Dictionary */
@@ -155,16 +156,36 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+btnStop.classList.add("disabled");
+btnStop.disabled = true;
+
 btnPlay.addEventListener("click", async function () {
   console.clear();
-
   console.log("[i] Play");
-
   let morseOutputArray = Array.from(morseOutput.value);
+
+  btnPlay.classList.add("disabled");
+  btnPlay.disabled = true;
+  btnStop.classList.remove("disabled");
+  btnStop.disabled = false;
+  plaintextInput.disabled = true;
 
   await sleep(250);
 
+  let play = true;
+
+  btnStop.addEventListener("click", function () {
+    play = false;
+    console.log("[i] Stop playing");
+  });
+
   for (symbol of morseOutputArray) {
+    if (play === false) {
+      btnStop.classList.add("disabled");
+      btnStop.disabled = true;
+      plaintextInput.disabled = false;
+      break;
+    }
     if (symbol === ".") {
       console.log(`${symbol} : dot`);
       await sleep(100);
@@ -185,4 +206,7 @@ btnPlay.addEventListener("click", async function () {
       console.log(`${symbol} : UNKNOWN`);
     }
   }
+  btnPlay.classList.remove("disabled");
+  btnPlay.disabled = false;
+  plaintextInput.disabled = false;
 });
