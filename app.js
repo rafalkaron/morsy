@@ -1,6 +1,7 @@
 const plaintextInput = document.getElementById("plaintextInput");
 const morseOutput = document.getElementById("morseOutput");
 const btnLight = document.getElementById("btnLight");
+const btnPlay = document.getElementById("btnPlay");
 const rootPageElement = document.documentElement;
 
 /* Character:Morse Dictionary */
@@ -93,18 +94,24 @@ const generateMorse = (inputText) => {
     plaintextInput.style.borderColor = "black";
     morseOutput.style.color = "#757575";
     morseOutput.style.fontWeight = "500";
+    btnPlay.classList.remove("disabled");
+    btnPlay.disabled = false;
     return ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
   } else if (found === true && plaintextInput.value !== "") {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
     plaintextInput.style.borderColor = "black";
     morseOutput.style.color = "black";
     morseOutput.style.fontWeight = "500";
+    btnPlay.classList.remove("disabled");
+    btnPlay.disabled = false;
     return morse;
   } else {
     plaintextInput.style.borderColor = "#B33C1B";
     morseOutput.style.fontWeight = "bold";
     morseOutput.style.color = "#B33C1B";
     console.log(`[!] Illegal Symbol`);
+    btnPlay.classList.add("disabled");
+    btnPlay.disabled = true;
     return `From your message above, remove the following untranslatable characters: \r\n
     ${invalidCharacters.join(", ")}`;
   }
@@ -140,3 +147,42 @@ btnLight.addEventListener("click", function () {
   }
 });
 */
+/* BEEPER */
+const soundDot = new Audio("assets/beeps/dot.mp3");
+const soundDash = new Audio("assets/beeps/dash.mp3");
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+btnPlay.addEventListener("click", async function () {
+  console.clear();
+
+  console.log("[i] Play");
+
+  let morseOutputArray = Array.from(morseOutput.value);
+
+  await sleep(250);
+
+  for (symbol of morseOutputArray) {
+    if (symbol === ".") {
+      console.log(`${symbol} : dot`);
+      await sleep(100);
+      soundDot.play();
+      await sleep(150);
+    } else if (symbol === "-") {
+      console.log(`${symbol} : dash`);
+      await sleep(100);
+      soundDash.play();
+      await sleep(315);
+    } else if (symbol === " ") {
+      console.log(`${symbol} : break`);
+      await sleep(100);
+    } else if (symbol === "/") {
+      console.log(`${symbol} : space`);
+      await sleep(150);
+    } else {
+      console.log(`${symbol} : UNKNOWN`);
+    }
+  }
+});
