@@ -96,6 +96,12 @@ plaintextInput.focus();
 plaintextInput.select();
 morseOutput.style.color = "#757575";
 
+/* Set buttons */
+btnStop.classList.add("disabled");
+btnStop.disabled = true;
+btnPause.classList.add("disabled");
+btnPause.disabled = true;
+
 /* Generate Morse code */
 const generateMorse = (inputText) => {
   let morse = inputText.toUpperCase(inputText);
@@ -137,12 +143,6 @@ const generateMorse = (inputText) => {
     ${invalidCharacters.join(", ")}`;
   }
 };
-
-/* BEEPER */
-btnStop.classList.add("disabled");
-btnStop.disabled = true;
-btnPause.classList.add("disabled");
-btnPause.disabled = true;
 
 /* BUTTON: Light */
 let light = false;
@@ -193,7 +193,16 @@ btnPause.addEventListener("click", function () {
   }
 });
 
+/* BUTTON: Stop */
+let play = true;
+btnStop.addEventListener("click", function () {
+  play = false;
+  console.log("[i] Stop playing");
+});
+
+/* BUTTON: Play */
 btnPlay.addEventListener("click", async function () {
+  play = true;
   console.log("[i] Play");
   let morseOutputArray = Array.from(morseOutput.value);
   btnPlay.classList.add("disabled");
@@ -206,13 +215,6 @@ btnPlay.addEventListener("click", async function () {
   btnClear.classList.add("disabled");
   plaintextInput.disabled = true;
   await sleep(250);
-
-  /* BUTTON: Stop */
-  let play = true;
-  btnStop.addEventListener("click", function () {
-    play = false;
-    console.log("[i] Stop playing");
-  });
 
   while (play === true) {
     for (symbol of morseOutputArray) {
