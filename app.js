@@ -174,9 +174,6 @@ btnPlay.addEventListener("click", async function () {
           btnPause.disabled = true;
           btnPause.blur();
           plaintextInput.disabled = false;
-          repeat = false;
-          btnRepeat.blur();
-          btnRepeat.classList.remove("focused");
           break;
         }
       }
@@ -188,9 +185,6 @@ btnPlay.addEventListener("click", async function () {
         btnPause.disabled = true;
         btnPause.blur();
         plaintextInput.disabled = false;
-        repeat = false;
-        btnRepeat.blur();
-        btnRepeat.classList.remove("focused");
         break;
       }
       if (symbol === ".") {
