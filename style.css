@@ -268,13 +268,4 @@ button.disabled:active {
     font-size: 50%;
   }
 }
-
 /* TALL SCREENS - END */
-
-:fullscreen body {
-  display: none;
-}
-
-:fullscreen {
-  background-color: #000;
-}

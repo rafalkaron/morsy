@@ -1,3 +1,4 @@
+/* Global variables */
 const plaintextInput = document.getElementById("plaintextInput");
 const morseOutput = document.getElementById("morseOutput");
 const btnLight = document.getElementById("btnLight");
@@ -7,10 +8,6 @@ const btnRepeat = document.getElementById("btnRepeat");
 const btnClear = document.getElementById("btnClear");
 const btnPause = document.getElementById("btnPause");
 const rootPageElement = document.documentElement;
-
-/* Place cursor in the input field automatically */
-plaintextInput.focus();
-plaintextInput.select();
 
 /* Character:Morse Dictionary */
 const morseDictionary = {
@@ -79,10 +76,16 @@ const morseDictionary = {
   "@": ".--.-. ",
 };
 
+const morseOutputDefault =
+  ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+morseOutput.innerHTML = morseOutputDefault;
+
+/* Place cursor in the input field automatically */
+plaintextInput.focus();
+plaintextInput.select();
+
 const allowedCharacters = Object.keys(morseDictionary);
 
-morseOutput.innerHTML =
-  ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
 morseOutput.style.color = "#757575";
 
 /* Generate Morse code */
@@ -179,6 +182,22 @@ btnRepeat.addEventListener("click", function () {
   }
 });
 
+/* Pause */
+let pause = false;
+btnPause.addEventListener("click", function () {
+  if (pause === false) {
+    pause = true;
+    console.log("[i] Pause");
+    btnPause.focus();
+    btnPause.classList.add("focused");
+  } else if (pause === true) {
+    pause = false;
+    console.log("[i] Continue");
+    btnPause.blur();
+    btnPause.classList.remove("focused");
+  }
+});
+
 btnPlay.addEventListener("click", async function () {
   console.clear();
   console.log("[i] Play");
@@ -203,22 +222,6 @@ btnPlay.addEventListener("click", async function () {
     console.log("[i] Stop playing");
   });
 
-  /* Pause */
-  let pause = false;
-  btnPause.addEventListener("click", function () {
-    if (pause === false) {
-      pause = true;
-      console.log("[i] Pause");
-      btnPause.focus();
-      btnPause.classList.add("focused");
-    } else if (pause === true) {
-      pause = false;
-      console.log("[i] Continue");
-      btnPause.blur();
-      btnPause.classList.remove("focused");
-    }
-  });
-
   while (play === true) {
     for (symbol of morseOutputArray) {
       while (pause === true) {
@@ -231,6 +234,7 @@ btnPlay.addEventListener("click", async function () {
           btnStop.disabled = true;
           btnPause.classList.add("disabled");
           btnPause.disabled = true;
+          btnPause.blur();
           plaintextInput.disabled = false;
           repeat = false;
           btnRepeat.blur();
@@ -244,6 +248,7 @@ btnPlay.addEventListener("click", async function () {
         btnStop.disabled = true;
         btnPause.classList.add("disabled");
         btnPause.disabled = true;
+        btnPause.blur();
         plaintextInput.disabled = false;
         repeat = false;
         btnRepeat.blur();
@@ -298,27 +303,13 @@ btnPlay.addEventListener("click", async function () {
   btnClear.classList.remove("disabled");
 });
 
-/* Clear */
+/* BUTTON: clear */
 btnClear.addEventListener("click", function () {
   plaintextInput.value = null;
-  morseOutput.innerHTML =
-    ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+  morseOutput.innerHTML = morseOutputDefault;
   plaintextInput.focus();
   plaintextInput.select();
   console.log("[i] Clear");
   btnClear.blur();
+  morseOutput.style.color = "#757575";
 });
-
-/* Lights */
-/* View in fullscreen */
-function openFullscreen() {
-  if (rootPageElement.requestFullscreen) {
-    rootPageElement.requestFullscreen();
-  } else if (rootPageElement.webkitRequestFullscreen) {
-    /* Safari */
-    rootPageElement.webkitRequestFullscreen();
-  } else if (rootPageElement.msRequestFullscreen) {
-    /* IE11 */
-    rootPageElement.msRequestFullscreen();
-  }
-}
