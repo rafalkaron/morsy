@@ -144,62 +144,6 @@ const generateMorse = (inputText) => {
   }
 };
 
-/* BUTTON: Light */
-let light = false;
-btnLight.addEventListener("click", async function () {
-  if (light === false) {
-    light = true;
-    console.log("[i] Light");
-    btnLight.focus();
-    btnLight.classList.add("focused");
-  } else if (light === true) {
-    light = false;
-    console.log("[i] Darkness");
-    btnLight.blur();
-    btnLight.classList.remove("focused");
-    rootPageElement.style.backgroundColor = "#118ab2";
-  }
-});
-
-/* BUTTON: Repeat */
-let repeat = false;
-btnRepeat.addEventListener("click", function () {
-  if (repeat === false) {
-    repeat = true;
-    console.log("[i] Repeat");
-    btnRepeat.focus();
-    btnRepeat.classList.add("focused");
-  } else if (repeat === true) {
-    repeat = false;
-    console.log("[i] Don't repeat");
-    btnRepeat.blur();
-    btnRepeat.classList.remove("focused");
-  }
-});
-
-/* BUTTON: Pause */
-let pause = false;
-btnPause.addEventListener("click", function () {
-  if (pause === false) {
-    pause = true;
-    console.log("[i] Pause");
-    btnPause.focus();
-    btnPause.classList.add("focused");
-  } else if (pause === true) {
-    pause = false;
-    console.log("[i] Continue");
-    btnPause.blur();
-    btnPause.classList.remove("focused");
-  }
-});
-
-/* BUTTON: Stop */
-let play = true;
-btnStop.addEventListener("click", function () {
-  play = false;
-  console.log("[i] Stop playing");
-});
-
 /* BUTTON: Play */
 btnPlay.addEventListener("click", async function () {
   play = true;
@@ -295,6 +239,62 @@ btnPlay.addEventListener("click", async function () {
   plaintextInput.disabled = false;
   btnClear.disabled = false;
   btnClear.classList.remove("disabled");
+});
+
+/* BUTTON: Pause */
+let pause = false;
+btnPause.addEventListener("click", function () {
+  if (pause === false) {
+    pause = true;
+    console.log("[i] Pause");
+    btnPause.focus();
+    btnPause.classList.add("focused");
+  } else if (pause === true) {
+    pause = false;
+    console.log("[i] Continue");
+    btnPause.blur();
+    btnPause.classList.remove("focused");
+  }
+});
+
+/* BUTTON: Stop */
+let play = true;
+btnStop.addEventListener("click", function () {
+  play = false;
+  console.log("[i] Stop playing");
+});
+
+/* BUTTON: Repeat */
+let repeat = false;
+btnRepeat.addEventListener("click", function () {
+  if (repeat === false) {
+    repeat = true;
+    console.log("[i] Repeat");
+    btnRepeat.focus();
+    btnRepeat.classList.add("focused");
+  } else if (repeat === true) {
+    repeat = false;
+    console.log("[i] Don't repeat");
+    btnRepeat.blur();
+    btnRepeat.classList.remove("focused");
+  }
+});
+
+/* BUTTON: Light */
+let light = false;
+btnLight.addEventListener("click", async function () {
+  if (light === false) {
+    light = true;
+    console.log("[i] Light");
+    btnLight.focus();
+    btnLight.classList.add("focused");
+  } else if (light === true) {
+    light = false;
+    console.log("[i] Darkness");
+    btnLight.blur();
+    btnLight.classList.remove("focused");
+    rootPageElement.style.backgroundColor = "#118ab2";
+  }
 });
 
 /* BUTTON: Clear */
