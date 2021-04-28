@@ -79,6 +79,12 @@ const soundDash = new Audio("assets/beeps/dash.mp3");
 const morseOutputDefault =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
 
+/* Set buttons state */
+let play = false;
+let pause = false;
+let repeat = false;
+let light = false;
+
 /* Sleep function */
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -236,7 +242,6 @@ btnPlay.addEventListener("click", async function () {
 });
 
 /* BUTTON: Pause */
-let pause = false;
 btnPause.addEventListener("click", function () {
   if (pause === false) {
     pause = true;
@@ -252,14 +257,12 @@ btnPause.addEventListener("click", function () {
 });
 
 /* BUTTON: Stop */
-let play = true;
 btnStop.addEventListener("click", function () {
   play = false;
   console.log("[i] Stop playing");
 });
 
 /* BUTTON: Repeat */
-let repeat = false;
 btnRepeat.addEventListener("click", function () {
   if (repeat === false) {
     repeat = true;
@@ -275,7 +278,6 @@ btnRepeat.addEventListener("click", function () {
 });
 
 /* BUTTON: Light */
-let light = false;
 btnLight.addEventListener("click", async function () {
   if (light === false) {
     light = true;
