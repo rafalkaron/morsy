@@ -133,30 +133,6 @@ plaintextInput.addEventListener(
   (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
 );
 
-/* View in fullscreen */
-function openFullscreen() {
-  if (rootPageElement.requestFullscreen) {
-    rootPageElement.requestFullscreen();
-  } else if (rootPageElement.webkitRequestFullscreen) {
-    /* Safari */
-    rootPageElement.webkitRequestFullscreen();
-  } else if (rootPageElement.msRequestFullscreen) {
-    /* IE11 */
-    rootPageElement.msRequestFullscreen();
-  }
-}
-
-/* Init strobo 
-btnLight.addEventListener("click", function () {
-  console.log("[i] Light");
-  openFullscreen();
-
-  for (symbol in morseOutput.value) {
-    console.log(symbol);
-    rootPageElement.style.backgroundColor = "orange";
-  }
-});
-*/
 /* BEEPER */
 const soundDot = new Audio("assets/beeps/dot.mp3");
 const soundDash = new Audio("assets/beeps/dash.mp3");
@@ -169,6 +145,23 @@ btnStop.classList.add("disabled");
 btnStop.disabled = true;
 btnPause.classList.add("disabled");
 btnPause.disabled = true;
+
+/* Light */
+let light = false;
+btnLight.addEventListener("click", async function () {
+  if (light === false) {
+    light = true;
+    console.log("[i] Light");
+    btnLight.focus();
+    btnLight.classList.add("focused");
+  } else if (light === true) {
+    light = false;
+    console.log("[i] Darkness");
+    btnLight.blur();
+    btnLight.classList.remove("focused");
+    rootPageElement.style.backgroundColor = "#118ab2";
+  }
+});
 
 /* Repeat */
 let repeat = false;
@@ -260,13 +253,25 @@ btnPlay.addEventListener("click", async function () {
       if (symbol === ".") {
         console.log(`${symbol} : dot`);
         await sleep(100);
+        if (light === true) {
+          rootPageElement.style.backgroundColor = "white";
+        }
         soundDot.play();
         await sleep(150);
+        if (light === true) {
+          rootPageElement.style.backgroundColor = "black";
+        }
       } else if (symbol === "-") {
         console.log(`${symbol} : dash`);
         await sleep(100);
+        if (light === true) {
+          rootPageElement.style.backgroundColor = "white";
+        }
         soundDash.play();
         await sleep(315);
+        if (light === true) {
+          rootPageElement.style.backgroundColor = "black";
+        }
       } else if (symbol === " ") {
         console.log(`${symbol} : break`);
         await sleep(100);
@@ -281,6 +286,7 @@ btnPlay.addEventListener("click", async function () {
       break;
     }
   }
+  rootPageElement.style.backgroundColor = "#118ab2";
   btnPlay.classList.remove("disabled");
   btnPlay.disabled = false;
   btnStop.classList.add("disabled");
@@ -302,3 +308,17 @@ btnClear.addEventListener("click", function () {
   console.log("[i] Clear");
   btnClear.blur();
 });
+
+/* Lights */
+/* View in fullscreen */
+function openFullscreen() {
+  if (rootPageElement.requestFullscreen) {
+    rootPageElement.requestFullscreen();
+  } else if (rootPageElement.webkitRequestFullscreen) {
+    /* Safari */
+    rootPageElement.webkitRequestFullscreen();
+  } else if (rootPageElement.msRequestFullscreen) {
+    /* IE11 */
+    rootPageElement.msRequestFullscreen();
+  }
+}
