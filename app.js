@@ -174,16 +174,15 @@ btnPlay.addEventListener("click", async function () {
   plaintextInput.disabled = true;
   await sleep(250);
 
-  while (play === true) {
-    for (symbol of morseOutputArray) {
-      while (pause === true && play === true) {
+  loop1: while (play === true) {
+    loop2: for (symbol of morseOutputArray) {
+      loop3: while (pause === true && play === true) {
         /* This part does not work */
-        if (play === false) {
-          console.log("dupa!!!");
-          break;
-        }
         await sleep(500);
         console.log("Paused...");
+        if (play === false) {
+          break loop1;
+        }
       }
       if (play === false) {
         break;
@@ -264,6 +263,7 @@ btnStop.addEventListener("click", function () {
   btnStop.disabled = true;
   btnPause.classList.add("disabled");
   btnPause.disabled = true;
+  btnPause.classList.remove("focused");
   btnPause.blur();
 });
 
