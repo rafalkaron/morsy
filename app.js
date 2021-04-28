@@ -8,8 +8,6 @@ const btnRepeat = document.getElementById("btnRepeat");
 const btnClear = document.getElementById("btnClear");
 const btnPause = document.getElementById("btnPause");
 const rootPageElement = document.documentElement;
-
-/* Character:Morse Dictionary */
 const morseDictionary = {
   A: ".- ",
   Ą: ".-.- ",
@@ -75,7 +73,7 @@ const morseDictionary = {
   "+": ".-.-. ",
   "@": ".--.-. ",
 };
-
+const allowedCharacters = Object.keys(morseDictionary);
 const morseOutputDefault =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
 morseOutput.innerHTML = morseOutputDefault;
@@ -83,9 +81,6 @@ morseOutput.innerHTML = morseOutputDefault;
 /* Place cursor in the input field automatically */
 plaintextInput.focus();
 plaintextInput.select();
-
-const allowedCharacters = Object.keys(morseDictionary);
-
 morseOutput.style.color = "#757575";
 
 /* Generate Morse code */
