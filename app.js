@@ -171,26 +171,11 @@ btnPlay.addEventListener("click", async function () {
       while (pause === true) {
         await sleep(500);
         console.log("Paused...");
-
-        /* TODO: Remove duplicated code */
         if (play === false) {
-          btnStop.classList.add("disabled");
-          btnStop.disabled = true;
-          btnPause.classList.add("disabled");
-          btnPause.disabled = true;
-          btnPause.blur();
-          plaintextInput.disabled = false;
           break;
         }
       }
-
       if (play === false) {
-        btnStop.classList.add("disabled");
-        btnStop.disabled = true;
-        btnPause.classList.add("disabled");
-        btnPause.disabled = true;
-        btnPause.blur();
-        plaintextInput.disabled = false;
         break;
       }
       if (symbol === ".") {
@@ -260,6 +245,12 @@ btnPause.addEventListener("click", function () {
 btnStop.addEventListener("click", function () {
   play = false;
   console.log("[i] Stop playing");
+  btnStop.classList.add("disabled");
+  btnStop.disabled = true;
+  btnPause.classList.add("disabled");
+  btnPause.disabled = true;
+  btnPause.blur();
+  plaintextInput.disabled = false;
 });
 
 /* BUTTON: Repeat */
