@@ -234,6 +234,10 @@ btnPlay.addEventListener("click", async function () {
   btnClear.disabled = false;
   plaintextInput.disabled = false;
   rootPageElement.style.backgroundColor = "#118ab2";
+  if (plaintextInput.value === "") {
+    btnClear.disabled = true;
+    btnClear.classList.add("disabled");
+  }
 });
 
 /* BUTTON: Pause */
