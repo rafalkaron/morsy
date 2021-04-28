@@ -73,6 +73,7 @@ const morseDictionary = {
   "+": ".-.-. ",
   "@": ".--.-. ",
 };
+
 const allowedCharacters = Object.keys(morseDictionary);
 const soundDot = new Audio("assets/beeps/dot.mp3");
 const soundDash = new Audio("assets/beeps/dash.mp3");
@@ -175,17 +176,14 @@ btnPlay.addEventListener("click", async function () {
 
   while (play === true) {
     for (symbol of morseOutputArray) {
-      while (pause === true) {
-        await sleep(500);
-        console.log("Paused...");
-
-        if (pause === false) {
-          return;
-        }
-
+      while (pause === true && play === true) {
+        /* This part does not work */
         if (play === false) {
+          console.log("dupa!!!");
           break;
         }
+        await sleep(500);
+        console.log("Paused...");
       }
       if (play === false) {
         break;
@@ -222,6 +220,7 @@ btnPlay.addEventListener("click", async function () {
         console.log(`${symbol} : UNKNOWN`);
       }
     }
+    await sleep(500);
     if (repeat === false) {
       break;
     }
@@ -259,6 +258,8 @@ btnStop.addEventListener("click", function () {
   pause = false;
   plaintextInput.disabled = false;
   console.log("[i] Stop playing");
+  btnPlay.classList.remove("disabled");
+  btnPlay.disabled = false;
   btnStop.classList.add("disabled");
   btnStop.disabled = true;
   btnPause.classList.add("disabled");
