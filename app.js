@@ -74,11 +74,24 @@ const morseDictionary = {
   "@": ".--.-. ",
 };
 const allowedCharacters = Object.keys(morseDictionary);
+const soundDot = new Audio("assets/beeps/dot.mp3");
+const soundDash = new Audio("assets/beeps/dash.mp3");
 const morseOutputDefault =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
-morseOutput.innerHTML = morseOutputDefault;
+
+/* Sleep function */
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/* Populate the output field on change */
+plaintextInput.addEventListener(
+  "input",
+  (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
+);
 
 /* Place cursor in the input field automatically */
+morseOutput.innerHTML = morseOutputDefault;
 plaintextInput.focus();
 plaintextInput.select();
 morseOutput.style.color = "#757575";
@@ -102,7 +115,7 @@ const generateMorse = (inputText) => {
     morseOutput.style.fontWeight = "500";
     btnPlay.classList.remove("disabled");
     btnPlay.disabled = false;
-    return ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+    return morseOutputDefault;
   } else if (found === true && plaintextInput.value !== "") {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
     /* Remove the redundant space at the end */
@@ -125,26 +138,13 @@ const generateMorse = (inputText) => {
   }
 };
 
-/* Populate the output field on change */
-plaintextInput.addEventListener(
-  "input",
-  (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
-);
-
 /* BEEPER */
-const soundDot = new Audio("assets/beeps/dot.mp3");
-const soundDash = new Audio("assets/beeps/dash.mp3");
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 btnStop.classList.add("disabled");
 btnStop.disabled = true;
 btnPause.classList.add("disabled");
 btnPause.disabled = true;
 
-/* Light */
+/* BUTTON: Light */
 let light = false;
 btnLight.addEventListener("click", async function () {
   if (light === false) {
@@ -161,7 +161,7 @@ btnLight.addEventListener("click", async function () {
   }
 });
 
-/* Repeat */
+/* BUTTON: Repeat */
 let repeat = false;
 btnRepeat.addEventListener("click", function () {
   if (repeat === false) {
@@ -177,7 +177,7 @@ btnRepeat.addEventListener("click", function () {
   }
 });
 
-/* Pause */
+/* BUTTON: Pause */
 let pause = false;
 btnPause.addEventListener("click", function () {
   if (pause === false) {
@@ -194,10 +194,8 @@ btnPause.addEventListener("click", function () {
 });
 
 btnPlay.addEventListener("click", async function () {
-  console.clear();
   console.log("[i] Play");
   let morseOutputArray = Array.from(morseOutput.value);
-
   btnPlay.classList.add("disabled");
   btnPlay.disabled = true;
   btnStop.classList.remove("disabled");
@@ -207,10 +205,9 @@ btnPlay.addEventListener("click", async function () {
   btnClear.disabled = true;
   btnClear.classList.add("disabled");
   plaintextInput.disabled = true;
-
   await sleep(250);
 
-  /* Stop */
+  /* BUTTON: Stop */
   let play = true;
   btnStop.addEventListener("click", function () {
     play = false;
@@ -298,7 +295,7 @@ btnPlay.addEventListener("click", async function () {
   btnClear.classList.remove("disabled");
 });
 
-/* BUTTON: clear */
+/* BUTTON: Clear */
 btnClear.addEventListener("click", function () {
   plaintextInput.value = null;
   morseOutput.innerHTML = morseOutputDefault;
