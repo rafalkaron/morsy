@@ -315,4 +315,5 @@ btnClear.addEventListener("click", function () {
   morseOutput.style.color = "#757575";
   btnClear.classList.add("disabled");
   btnClear.disabled = true;
+  plaintextInput.style.borderColor = "black";
 });
