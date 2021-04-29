@@ -79,12 +79,8 @@ const morseDictionary = {
 };
 
 const allowedCharacters = Object.keys(morseDictionary);
-
-const soundDot = new Audio();
-soundDot.play();
-const soundDash = new Audio();
-soundDash.play();
-
+const soundDot = new Audio("assets/beeps/dot.mp3");
+const soundDash = new Audio("assets/beeps/dash.mp3");
 const morseOutputDefault =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
 
@@ -202,9 +198,8 @@ btnPlay.addEventListener("click", async function () {
         if (light === true) {
           rootPageElement.style.backgroundColor = "white";
         }
-        soundDot.src = "assets/beeps/dot.mp3";
+        soundDot.pause();
         soundDot.play();
-
         await sleep(150);
         if (light === true) {
           rootPageElement.style.backgroundColor = "black";
@@ -215,7 +210,7 @@ btnPlay.addEventListener("click", async function () {
         if (light === true) {
           rootPageElement.style.backgroundColor = "white";
         }
-        soundDash.src = "assets/beeps/dash.mp3";
+        soundDash.pause();
         soundDash.play();
         await sleep(315);
         if (light === true) {
@@ -324,8 +319,6 @@ btnClear.addEventListener("click", function () {
   morseOutput.style.color = "#757575";
   btnClear.classList.add("disabled");
   btnClear.disabled = true;
-  btnPlay.classList.remove("disabled");
-  btnPlay.disabled = false;
   plaintextInput.style.borderColor = "black";
   plaintextInput.style.height = "100px";
 });
