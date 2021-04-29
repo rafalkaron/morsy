@@ -316,4 +316,5 @@ btnClear.addEventListener("click", function () {
   btnClear.classList.add("disabled");
   btnClear.disabled = true;
   plaintextInput.style.borderColor = "black";
+  plaintextInput.style.height = "100px";
 });
