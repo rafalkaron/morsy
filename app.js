@@ -157,6 +157,8 @@ const generateMorse = (inputText) => {
     console.log(`[!] Illegal Symbol`);
     btnPlay.classList.add("disabled");
     btnPlay.disabled = true;
+    btnClear.classList.remove("disabled");
+    btnClear.disabled = false;
     return `From your message above, remove the following untranslatable characters: \r\n
     ${invalidCharacters.join(", ")}`;
   }
