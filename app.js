@@ -1,3 +1,4 @@
+/* Global variables */
 const plaintextInput = document.getElementById("plaintextInput");
 const morseOutput = document.getElementById("morseOutput");
 const btnLight = document.getElementById("btnLight");
@@ -7,12 +8,6 @@ const btnRepeat = document.getElementById("btnRepeat");
 const btnClear = document.getElementById("btnClear");
 const btnPause = document.getElementById("btnPause");
 const rootPageElement = document.documentElement;
-
-/* Place cursor in the input field automatically */
-plaintextInput.focus();
-plaintextInput.select();
-
-/* Character:Morse Dictionary */
 const morseDictionary = {
   A: ".- ",
   Ą: ".-.- ",
@@ -77,12 +72,48 @@ const morseDictionary = {
   "=": "-...- ",
   "+": ".-.-. ",
   "@": ".--.-. ",
+  '"': ".−..−. ",
+  "'": ".----. ",
+  _: "..−−.− ",
+  $: "...−..− ",
 };
 
 const allowedCharacters = Object.keys(morseDictionary);
-
-morseOutput.innerHTML =
+const soundDot = new Audio("assets/beeps/dot.mp3");
+const soundDash = new Audio("assets/beeps/dash.mp3");
+const morseOutputDefault =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+
+/* Set buttons state */
+let play = false;
+let pause = false;
+let repeat = false;
+let light = false;
+
+/* Set buttons */
+btnStop.classList.add("disabled");
+btnStop.disabled = true;
+btnPause.classList.add("disabled");
+btnPause.disabled = true;
+btnClear.classList.add("disabled");
+btnClear.disabled = true;
+
+/* Sleep function */
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/* Populate the output field on change */
+plaintextInput.addEventListener(
+  "input",
+  (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
+);
+
+/* Place cursor in the input field automatically */
+morseOutput.innerHTML = morseOutputDefault;
+plaintextInput.disabled = false;
+plaintextInput.focus();
+plaintextInput.select();
 morseOutput.style.color = "#757575";
 
 /* Generate Morse code */
@@ -104,7 +135,9 @@ const generateMorse = (inputText) => {
     morseOutput.style.fontWeight = "500";
     btnPlay.classList.remove("disabled");
     btnPlay.disabled = false;
-    return ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+    btnClear.classList.add("disabled");
+    btnClear.disabled = true;
+    return morseOutputDefault;
   } else if (found === true && plaintextInput.value !== "") {
     morse = morse.replace(/./gi, (m) => morseDictionary[m]);
     /* Remove the redundant space at the end */
@@ -114,6 +147,8 @@ const generateMorse = (inputText) => {
     morseOutput.style.fontWeight = "500";
     btnPlay.classList.remove("disabled");
     btnPlay.disabled = false;
+    btnClear.classList.remove("disabled");
+    btnClear.disabled = false;
     return morse;
   } else {
     plaintextInput.style.borderColor = "#B33C1B";
@@ -127,63 +162,11 @@ const generateMorse = (inputText) => {
   }
 };
 
-/* Populate the output field on change */
-plaintextInput.addEventListener(
-  "input",
-  (event) => (morseOutput.innerHTML = generateMorse(plaintextInput.value))
-);
-
-/* BEEPER */
-const soundDot = new Audio("assets/beeps/dot.mp3");
-const soundDash = new Audio("assets/beeps/dash.mp3");
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-btnStop.classList.add("disabled");
-btnStop.disabled = true;
-btnPause.classList.add("disabled");
-btnPause.disabled = true;
-
-/* Light */
-let light = false;
-btnLight.addEventListener("click", async function () {
-  if (light === false) {
-    light = true;
-    console.log("[i] Light");
-    btnLight.focus();
-    btnLight.classList.add("focused");
-  } else if (light === true) {
-    light = false;
-    console.log("[i] Darkness");
-    btnLight.blur();
-    btnLight.classList.remove("focused");
-    rootPageElement.style.backgroundColor = "#118ab2";
-  }
-});
-
-/* Repeat */
-let repeat = false;
-btnRepeat.addEventListener("click", function () {
-  if (repeat === false) {
-    repeat = true;
-    console.log("[i] Repeat");
-    btnRepeat.focus();
-    btnRepeat.classList.add("focused");
-  } else if (repeat === true) {
-    repeat = false;
-    console.log("[i] Don't repeat");
-    btnRepeat.blur();
-    btnRepeat.classList.remove("focused");
-  }
-});
-
+/* BUTTON: Play */
 btnPlay.addEventListener("click", async function () {
-  console.clear();
+  play = true;
   console.log("[i] Play");
   let morseOutputArray = Array.from(morseOutput.value);
-
   btnPlay.classList.add("disabled");
   btnPlay.disabled = true;
   btnStop.classList.remove("disabled");
@@ -193,61 +176,18 @@ btnPlay.addEventListener("click", async function () {
   btnClear.disabled = true;
   btnClear.classList.add("disabled");
   plaintextInput.disabled = true;
-
   await sleep(250);
 
-  /* Stop */
-  let play = true;
-  btnStop.addEventListener("click", function () {
-    play = false;
-    console.log("[i] Stop playing");
-  });
-
-  /* Pause */
-  let pause = false;
-  btnPause.addEventListener("click", function () {
-    if (pause === false) {
-      pause = true;
-      console.log("[i] Pause");
-      btnPause.focus();
-      btnPause.classList.add("focused");
-    } else if (pause === true) {
-      pause = false;
-      console.log("[i] Continue");
-      btnPause.blur();
-      btnPause.classList.remove("focused");
-    }
-  });
-
-  while (play === true) {
+  mainLoop: while (play === true) {
     for (symbol of morseOutputArray) {
-      while (pause === true) {
+      while (pause === true && play === true) {
         await sleep(500);
         console.log("Paused...");
-
-        /* TODO: Remove duplicated code */
         if (play === false) {
-          btnStop.classList.add("disabled");
-          btnStop.disabled = true;
-          btnPause.classList.add("disabled");
-          btnPause.disabled = true;
-          plaintextInput.disabled = false;
-          repeat = false;
-          btnRepeat.blur();
-          btnRepeat.classList.remove("focused");
-          break;
+          break mainLoop;
         }
       }
-
       if (play === false) {
-        btnStop.classList.add("disabled");
-        btnStop.disabled = true;
-        btnPause.classList.add("disabled");
-        btnPause.disabled = true;
-        plaintextInput.disabled = false;
-        repeat = false;
-        btnRepeat.blur();
-        btnRepeat.classList.remove("focused");
         break;
       }
       if (symbol === ".") {
@@ -282,43 +222,99 @@ btnPlay.addEventListener("click", async function () {
         console.log(`${symbol} : UNKNOWN`);
       }
     }
+    await sleep(500);
     if (repeat === false) {
       break;
     }
   }
-  rootPageElement.style.backgroundColor = "#118ab2";
   btnPlay.classList.remove("disabled");
   btnPlay.disabled = false;
   btnStop.classList.add("disabled");
   btnStop.disabled = true;
   btnPause.classList.add("disabled");
   btnPause.disabled = true;
-  plaintextInput.disabled = false;
-  btnClear.disabled = false;
   btnClear.classList.remove("disabled");
+  btnClear.disabled = false;
+  plaintextInput.disabled = false;
+  rootPageElement.style.backgroundColor = "#118ab2";
+  if (plaintextInput.value === "") {
+    btnClear.disabled = true;
+    btnClear.classList.add("disabled");
+  }
 });
 
-/* Clear */
+/* BUTTON: Pause */
+btnPause.addEventListener("click", function () {
+  if (pause === false) {
+    pause = true;
+    console.log("[i] Pause");
+    btnPause.focus();
+    btnPause.classList.add("focused");
+  } else if (pause === true) {
+    pause = false;
+    console.log("[i] Continue");
+    btnPause.blur();
+    btnPause.classList.remove("focused");
+  }
+});
+
+/* BUTTON: Stop */
+btnStop.addEventListener("click", function () {
+  play = false;
+  pause = false;
+  plaintextInput.disabled = false;
+  console.log("[i] Stop playing");
+  btnPlay.classList.remove("disabled");
+  btnPlay.disabled = false;
+  btnStop.classList.add("disabled");
+  btnStop.disabled = true;
+  btnPause.classList.add("disabled");
+  btnPause.disabled = true;
+  btnPause.classList.remove("focused");
+  btnPause.blur();
+});
+
+/* BUTTON: Repeat */
+btnRepeat.addEventListener("click", function () {
+  if (repeat === false) {
+    repeat = true;
+    console.log("[i] Repeat");
+    btnRepeat.focus();
+    btnRepeat.classList.add("focused");
+  } else if (repeat === true) {
+    repeat = false;
+    console.log("[i] Don't repeat");
+    btnRepeat.blur();
+    btnRepeat.classList.remove("focused");
+  }
+});
+
+/* BUTTON: Light */
+btnLight.addEventListener("click", async function () {
+  if (light === false) {
+    light = true;
+    console.log("[i] Light");
+    btnLight.focus();
+    btnLight.classList.add("focused");
+  } else if (light === true) {
+    light = false;
+    console.log("[i] Darkness");
+    btnLight.blur();
+    btnLight.classList.remove("focused");
+    rootPageElement.style.backgroundColor = "#118ab2";
+  }
+});
+
+/* BUTTON: Clear */
 btnClear.addEventListener("click", function () {
   plaintextInput.value = null;
-  morseOutput.innerHTML =
-    ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
+  morseOutput.innerHTML = morseOutputDefault;
   plaintextInput.focus();
   plaintextInput.select();
   console.log("[i] Clear");
-  btnClear.blur();
+  morseOutput.style.color = "#757575";
+  btnClear.classList.add("disabled");
+  btnClear.disabled = true;
+  plaintextInput.style.borderColor = "black";
+  plaintextInput.style.height = "100px";
 });
-
-/* Lights */
-/* View in fullscreen */
-function openFullscreen() {
-  if (rootPageElement.requestFullscreen) {
-    rootPageElement.requestFullscreen();
-  } else if (rootPageElement.webkitRequestFullscreen) {
-    /* Safari */
-    rootPageElement.webkitRequestFullscreen();
-  } else if (rootPageElement.msRequestFullscreen) {
-    /* IE11 */
-    rootPageElement.msRequestFullscreen();
-  }
-}
