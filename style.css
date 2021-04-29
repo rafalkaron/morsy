@@ -198,9 +198,10 @@ button {
   background-color: var(--light-color);
 }
 
-button:hover {
-  color: var(--light-color);
-  background-color: black;
+@media (hover: hover) and (pointer: fine) {
+  button:hover {   
+    color: var(--light-color);
+    background-color: black; }
 }
 
 button:active {

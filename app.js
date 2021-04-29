@@ -317,6 +317,8 @@ btnClear.addEventListener("click", function () {
   morseOutput.style.color = "#757575";
   btnClear.classList.add("disabled");
   btnClear.disabled = true;
+  btnPlay.classList.remove("disabled");
+  btnPlay.disabled = false;
   plaintextInput.style.borderColor = "black";
   plaintextInput.style.height = "100px";
 });
