@@ -198,6 +198,7 @@ btnPlay.addEventListener("click", async function () {
         if (light === true) {
           rootPageElement.style.backgroundColor = "white";
         }
+        soundDot.pause();
         soundDot.play();
         await sleep(150);
         if (light === true) {
@@ -209,6 +210,7 @@ btnPlay.addEventListener("click", async function () {
         if (light === true) {
           rootPageElement.style.backgroundColor = "white";
         }
+        soundDash.pause();
         soundDash.play();
         await sleep(315);
         if (light === true) {
