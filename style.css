@@ -14,6 +14,12 @@ html {
   max-height: 100vh;
   background-color: var(--accent-color);
   scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+html::-webkit-scrollbar{
+  display: none;
 }
 
 * {
@@ -170,6 +176,8 @@ h2 {
   font-size: 1.35rem;
   font-weight: 500;
   color: var(--dark-color);
+  overflow: hidden; /* Hide scrollbars */
+
 }
 
 div.controls {
