@@ -178,14 +178,13 @@ btnPlay.addEventListener("click", async function () {
   plaintextInput.disabled = true;
   await sleep(250);
 
-  loop1: while (play === true) {
-    loop2: for (symbol of morseOutputArray) {
-      loop3: while (pause === true && play === true) {
-        /* This part does not work */
+  mainLoop: while (play === true) {
+    for (symbol of morseOutputArray) {
+      while (pause === true && play === true) {
         await sleep(500);
         console.log("Paused...");
         if (play === false) {
-          break loop1;
+          break mainLoop;
         }
       }
       if (play === false) {
