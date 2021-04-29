@@ -72,6 +72,10 @@ const morseDictionary = {
   "=": "-...- ",
   "+": ".-.-. ",
   "@": ".--.-. ",
+  _: "..−−.− ",
+  '"': ".−..−. ",
+  "'": ".----. ",
+  $: "...−..− ",
 };
 
 const allowedCharacters = Object.keys(morseDictionary);
