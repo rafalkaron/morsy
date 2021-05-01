@@ -79,8 +79,8 @@ const morseDictionary = {
 };
 
 const allowedCharacters = Object.keys(morseDictionary);
-const soundDot = new Audio("assets/beeps/dot.mp3");
-const soundDash = new Audio("assets/beeps/dash.mp3");
+const soundDot = new Audio("assets/beeps/dot.m4a");
+const soundDash = new Audio("assets/beeps/dash.m4a");
 const morseOutputDefault =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
 
