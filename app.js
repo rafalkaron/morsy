@@ -79,8 +79,10 @@ const morseDictionary = {
 };
 
 const allowedCharacters = Object.keys(morseDictionary);
-const soundDot = new Audio("assets/beeps/dot.mp3");
-const soundDash = new Audio("assets/beeps/dash.mp3");
+
+const soundDot = new Audio();
+const soundDash = new Audio();
+
 const morseOutputDefault =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
 
@@ -167,6 +169,9 @@ const generateMorse = (inputText) => {
 /* BUTTON: Play */
 btnPlay.addEventListener("click", async function () {
   play = true;
+  // onClick of first interaction on page before I need the sounds
+  soundDot.play();
+  soundDash.play();
   console.log("[i] Play");
   let morseOutputArray = Array.from(morseOutput.value);
   btnPlay.classList.add("disabled");
@@ -198,7 +203,9 @@ btnPlay.addEventListener("click", async function () {
         if (light === true) {
           rootPageElement.style.backgroundColor = "white";
         }
+        soundDot.src = "assets/beeps/dot.mp3";
         soundDot.play();
+
         await sleep(150);
         if (light === true) {
           rootPageElement.style.backgroundColor = "black";
@@ -209,6 +216,7 @@ btnPlay.addEventListener("click", async function () {
         if (light === true) {
           rootPageElement.style.backgroundColor = "white";
         }
+        soundDash.src = "assets/beeps/dash.mp3";
         soundDash.play();
         await sleep(315);
         if (light === true) {
