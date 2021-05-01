@@ -198,7 +198,7 @@ btnPlay.addEventListener("click", async function () {
       if (symbol === ".") {
         console.log(`${symbol} : dot`);
         soundDot.src = "assets/beeps/none.mp3";
-        soundDot.play();
+        await soundDot.play();
         await sleep(100);
         if (light === true) {
           rootPageElement.style.backgroundColor = "white";
@@ -213,7 +213,7 @@ btnPlay.addEventListener("click", async function () {
       } else if (symbol === "-") {
         console.log(`${symbol} : dash`);
         soundDash.src = "assets/beeps/none.mp3";
-        soundDash.play();
+        await soundDash.play();
         await sleep(100);
         if (light === true) {
           rootPageElement.style.backgroundColor = "white";
