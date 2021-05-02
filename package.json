@@ -1,0 +1,22 @@
+{
+  "name": "morsy",
+  "version": "0.2.4",
+  "description": "Generate Morse code. Fast.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafalkaron/morsy.git"
+  },
+  "author": "Rafał Karoń",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafalkaron/morsy/issues"
+  },
+  "homepage": "https://github.com/rafalkaron/morsy#readme",
+  "dependencies": {
+    "audioconcat": "^0.1.4"
+  }
+}
