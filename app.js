@@ -84,6 +84,10 @@ const soundDash = new Audio("assets/beeps/dash.m4a");
 const morseOutputDefault =
   ". -. - . .-. /-.-- --- ..- .-. /-- . ... ... .- --. . /.... . .-. . .-.-.- .-.-.- .-.-.-";
 
+/* Detect Safari - some functionalities are not supported */
+const isSafari =
+  /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+
 /* Set buttons state */
 let play = false;
 let pause = false;
@@ -166,6 +170,12 @@ const generateMorse = (inputText) => {
 
 /* BUTTON: Play */
 btnPlay.addEventListener("click", async function () {
+  if (isSafari) {
+    alert(
+      "Currently you cannot play your messages in Safari or any iOS web browser."
+    );
+    return;
+  }
   play = true;
   console.log("[i] Play");
   let morseOutputArray = Array.from(morseOutput.value);
